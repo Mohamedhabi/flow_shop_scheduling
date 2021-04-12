@@ -12,8 +12,8 @@ def get_results(instance):
 
     #exemples
     instance.get_cost(0,0) # The cost of Job 0, on machine 0
-    instance.get_cost_on_machines(0) # the costs of job 0 on all machines
-    instance.get_jobs(0) # Get the costs of all jobs on machine 0
+    instance.get_job_costs(0) # the costs of job 0 on all machines
+    instance.get_machine_costs(0) # Get the costs of all jobs on machine 0
     #...
     return {
         "C_max": 13,

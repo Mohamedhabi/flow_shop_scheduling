@@ -15,10 +15,10 @@ class Instance:
     def get_cost(self, job, machine):
         return self.np_array[job][machine]
 
-    def get_cost_on_machines(self, job):
+    def get_job_costs(self, job):
         return self.np_array[job]
 
-    def get_jobs(self, machine):
+    def get_machine_costs(self, machine):
         return self.np_array[:,machine]
 
     def get_jobs_number(self):
