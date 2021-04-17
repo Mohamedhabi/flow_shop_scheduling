@@ -135,14 +135,14 @@ def general_case_branch_and_bound(instance :Instance):
     starting_seq = tuple(range(jobs_count))
     starting_node = Node([],starting_seq,machine_count)
     starting_node.eval = np.inf
-    lower_bound = np.inf
+    upper_bound = np.inf
     level = 0
     count_dict = {
         "explored" : 0,
         "pruned" : 0,
         "leaf" : 0
     }
-    bestNode,cost = BandB(instance,level,starting_node,lower_bound,count_dict)
+    bestNode,cost = BandB(instance,level,starting_node,upper_bound,count_dict)
 
     print("Nodes explored : " + str(count_dict["explored"]))
     
@@ -155,13 +155,13 @@ def general_case_branch_and_bound(instance :Instance):
         "order" : bestNode.scheduled_jobs
     }
 
-def BandB(instance: Instance,level : int ,node: Node,lower_bound: np.float,count_dict: dict):
+def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count_dict: dict):
     machine_count = instance.get_machines_number()
     count_dict["explored"] += 1
     print("exploring node: " + str(node.scheduled_jobs) + "/" + str(node.unscheduled_jobs))
     # this is a leef node can't be branched, we only calculate cost of this node
-    lowerbound = lower_bound
-    print("lowerbound : " + str(lowerbound))
+    ub = upper_bound
+    print("upper bound for cost is : " + str(ub))
     if(len(node.unscheduled_jobs) == 0):
         cost = node.eval
         print("leaf node : " + str(node.scheduled_jobs))
@@ -189,7 +189,7 @@ def BandB(instance: Instance,level : int ,node: Node,lower_bound: np.float,count
     
         # if eval is greater or to than lower_bound ==> dont add to nodelist (pruning the branch)
         # else add to an ordered list of nodes based on eval
-        if newnode.eval < lowerbound:
+        if newnode.eval < ub:
             next_nodelist.add(newnode)
             print("adding node : " + str(newnode.scheduled_jobs) + "/" + str(newnode.unscheduled_jobs))
         # we prune only when it is not a leaf node
@@ -198,25 +198,25 @@ def BandB(instance: Instance,level : int ,node: Node,lower_bound: np.float,count
             count_dict["pruned"] += 1
     # Best first search based on eval
     currentBest = node
-    currentCost= lowerbound
+    currentCost= ub
     # exploring the tree of nodes
     lvl = level +1 # current level of tree
     for next_node in next_nodelist:
         # if the lowerbound is updated we must recheck the node if we need to explore it
-        if(next_node.eval <= lowerbound):
+        if(next_node.eval <= ub):
             #explored +=1
-            best, cost = BandB(instance,lvl,next_node,lowerbound,count_dict)
+            best, cost = BandB(instance,lvl,next_node,ub,count_dict)
             #explored += exp
             if cost < currentCost:
                 currentBest = best
                 currentCost = cost
-                lowerbound = cost # updating lower bound to prune branches
+                ub = cost # updating lower bound to prune branches
         else:
             count_dict["pruned"] += 1
             print("pruning node : " + str(newnode.scheduled_jobs) + "/" + str(newnode.unscheduled_jobs))
     if(len(currentBest.scheduled_jobs) == instance.get_jobs_number()) :
         print("best branch node : " + str(currentBest.scheduled_jobs))
-        print("best branch node cost: " + str(currentBest.eval))
+        print("best branch node cost (lower bound): " + str(currentBest.eval))
         
     return currentBest,currentCost#,explored
 

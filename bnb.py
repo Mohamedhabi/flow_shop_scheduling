@@ -41,7 +41,7 @@ instance4 = Instance(
 )
 
 #benchmark = Benchmark(20, 5, benchmark_folder = './benchmarks')
-random_mat = np.random.rand(9,3) * 100
+random_mat = np.random.rand(4,3) * 100
 print("Instance :")
 print(random_mat)
 randomInstance = Instance(
