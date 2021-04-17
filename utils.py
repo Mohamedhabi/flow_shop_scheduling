@@ -1,16 +1,31 @@
 import numpy as np
 from datetime import datetime
+import re
 
 def convert_to_datetime(x):
       return datetime.fromtimestamp(31536000+x*24*3600).strftime("%Y-%m-%d")
 
+def get_groups(seq, group_by):
+    data = []
+    for line in seq:
+        if line.startswith(group_by):
+            if data:
+                yield data
+                data = []
+        data.append(line)
+
+    if data:
+        yield data
+
 class Instance:
     """
-    We dont know how the input is gonna be, so this classe would be an abstraction
-    we'll update it when we have the input format
+    Instance of the probleù
     """
-    def __init__(self, instance_2d_array):
+    def __init__(self, instance_2d_array, upper_bound = None, lower_bound = None):
         self.np_array = instance_2d_array
+        self.upper_bound = upper_bound
+        self.lower_bound = lower_bound
+  
 
     def get_cost(self, job, machine):
         return self.np_array[job][machine]
@@ -51,3 +66,38 @@ class Instance:
             'date_ticks':date_ticks
             }
 
+class Benchmark:
+    """
+    A class representing a benchmark
+    a benchmark is consists of multiple instance 
+    """
+    def __init__(self, nb_jobs, nb_machines, benchmark_folder = './benchmarks'):
+        self.nb_jobs = nb_jobs
+        self.nb_machines = nb_machines
+        self.instances = []
+        self.number_of_instances = 0
+        with open(benchmark_folder+"/tai"+str(nb_jobs)+'_'+str(nb_machines)+".txt") as file:
+            for i, group in enumerate(get_groups(file, "number of jobs")):
+                self.number_of_instances = i+1
+                group[1] = re.sub(' +', ' ', group[1])[1:-1]
+                infos = group[1].split(' ')
+                instance_matrix = []
+                
+                for i in range(3, 3+nb_machines):
+                    group[i] = group[i][:-1]
+                    machine = group[i].split(' ')
+                    machine = [ x for x in machine if x.isdigit() ]
+                    instance_matrix.append(machine)
+
+                self.instances.append(Instance(
+                    instance_2d_array = np.array(instance_matrix,dtype= np.int64).transpose(), 
+                    upper_bound = int(infos[-2]), 
+                    lower_bound = int(infos[-1])))
+
+    def get_instances_number(self):
+        return self.number_of_instances
+    
+    #index starts at 0
+    def get_instance(self, number):
+        if number < self.number_of_instances:
+            return self.instances[number]
