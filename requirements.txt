@@ -1,3 +1,5 @@
 plotly
 numpy
 matplotlib
+itertools
+sortedcontainers

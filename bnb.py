@@ -1,8 +1,9 @@
 
 from fsp.branch_and_bound import *
-from utils import Instance
+from utils import Instance,Benchmark
 import numpy as np
-
+#import argparse
+#parser = argparse.ArgumentParser(description='Exact methods flow shop permutation problem')
 instance1 = Instance(
     np.array([
         [2, 1],
@@ -19,18 +20,34 @@ instance2 = Instance(
         [3, 3]
     ], dtype=np.int64)
 )
+instance3 = Instance(
+    np.array([
+        [3,2,3],
+        [1,4,2],
+        [3,2,1],
+    ], dtype=np.int64)
+)
 
-# u,v = johnson_partition(instance2)
-# print(johnson_sort(u,1,False))
-# print(johnson_sort(v,2,True))
-# sequence = johnson_merge(u,v)
-# finM1,startM2,finM2 = johnson_get_schedule(sequence)
-# print(finM1)
-# print(startM2)
-# print(finM2)
+instance4 = Instance(
+    np.array([
+        [1,2,3,2],
+        [1,4,2,10],
+        [3,2,1,5],
+        [4,10,3,1],
+        [1,5,4,4],
+        [2,3,2,6],
+        [5,2,1,1],
+    ], dtype=np.int64)
+)
 
-# cost = finM2[-1][1]
-result = get_results(instance2)
+#benchmark = Benchmark(20, 5, benchmark_folder = './benchmarks')
+random_mat = np.random.rand(9,3) * 100
+print("Instance :")
+print(random_mat)
+randomInstance = Instance(
+    random_mat
+)
+result = get_results(randomInstance)
 order = result["order"]
 cost = result["C_max"]
 print("Sequence === ",order)
