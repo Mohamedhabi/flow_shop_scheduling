@@ -43,11 +43,11 @@ instance4 = Instance(
 #benchmark = Benchmark(20, 5, benchmark_folder = './benchmarks')
 random_mat = np.random.rand(4,3) * 100
 print("Instance :")
-print(random_mat)
+print(instance4)
 randomInstance = Instance(
     random_mat
 )
-result = get_results(randomInstance)
+result = get_results(instance4)
 order = result["order"]
 cost = result["C_max"]
 print("Sequence === ",order)

@@ -101,11 +101,11 @@ def get_results(instance : Instance):
         list: jobs order
     """
 
-    #exemples
-    instance.get_cost(0,0) # The cost of Job 0, on machine 0
-    instance.get_job_costs(0) # the costs of job 0 on all machines
-    instance.get_machine_costs(0) # Get the costs of all jobs on machine 0
-    #...
+    # #exemples
+    # instance.get_cost(0,0) # The cost of Job 0, on machine 0
+    # instance.get_job_costs(0) # the costs of job 0 on all machines
+    # instance.get_machine_costs(0) # Get the costs of all jobs on machine 0
+    # #...
     machine_count = instance.get_machines_number()
     if machine_count == 2:
         return johnson(instance)
@@ -119,6 +119,9 @@ class Node:
         self.unscheduled_jobs = set(unscheduled)
      
      def calculateCost(self,instance,level,job_index,prior_cost_row):
+         """
+         An O(m) function that computes a lower bound for this node (which is node.eval)
+         """
          machine = self.cost_array_row.size # nb machines
          for mach in range (machine):
              top = 0 if level == 0 else prior_cost_row[mach]
@@ -184,10 +187,10 @@ def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count
         print("node branched: " + str(newnode.scheduled_jobs) + "/" + str(newnode.unscheduled_jobs))
     
         # evalute node (bounding)
-        newnode.calculateCost(instance,level,unsched_job,node.cost_array_row)
+        newnode.calculateCost(instance,level,unsched_job,node.cost_array_row) 
         print("node : " + str(newnode.scheduled_jobs) + "/" + str(newnode.unscheduled_jobs) +" cost : " +str(newnode.eval))
     
-        # if eval is greater or to than lower_bound ==> dont add to nodelist (pruning the branch)
+        # if eval is greater or to than upper bound ==> dont add to nodelist (pruning the branch)
         # else add to an ordered list of nodes based on eval
         if newnode.eval < ub:
             next_nodelist.add(newnode)
@@ -210,7 +213,7 @@ def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count
             if cost < currentCost:
                 currentBest = best
                 currentCost = cost
-                ub = cost # updating lower bound to prune branches
+                ub = cost # updating upper bound to prune branches
         else:
             count_dict["pruned"] += 1
             print("pruning node : " + str(newnode.scheduled_jobs) + "/" + str(newnode.unscheduled_jobs))
