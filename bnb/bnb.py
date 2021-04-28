@@ -2,6 +2,7 @@
 from fsp.branch_and_bound import *
 from utils import Instance,Benchmark
 import numpy as np
+import time
 #import argparse
 #parser = argparse.ArgumentParser(description='Exact methods flow shop permutation problem')
 instance1 = Instance(
@@ -37,19 +38,35 @@ instance4 = Instance(
         [1,5,4,4],
         [2,3,2,6],
         [5,2,1,1],
+        [10,2,4,2],
+        [1,4,5,1],
     ], dtype=np.int64)
 )
 
 #benchmark = Benchmark(20, 5, benchmark_folder = './benchmarks')
-random_mat = np.random.rand(4,3) * 100
-print("Instance :")
-print(instance4)
-randomInstance = Instance(
-    random_mat
-)
-result = get_results(instance4)
+# random_mat = np.random.rand(9,3) * 100
+# print("Instance :")
+
+# randomInstance = Instance(
+#     random_mat
+# )
+# print(str(randomInstance))
+tdfs1 = time.time() 
+result = get_results(instance4,search_strategy=DEPTH_FIRST_SEARCH,log=False)
+tdfs2 = time.time()
+print(f"DFS took :{tdfs2 - tdfs1} s")
 order = result["order"]
 cost = result["C_max"]
 print("Sequence === ",order)
 print(f"Cost {cost}")
+tbfs1 = time.time() 
+result = get_results(instance4,search_strategy=BEST_FIRST_SEARCH,log=False)
+tbfs2 = time.time() 
+order = result["order"]
+cost = result["C_max"]
+print("Sequence === ",order)
+print(f"Cost {cost}")
+
+print(f"BFS took :{tbfs2 - tbfs1} s")
+
 ##print(f"Cost : {johnshon_calculateCost(instance)} time unit")
