@@ -165,7 +165,7 @@ def general_case_branch_and_bound(instance :Instance,search_strategy=BEST_FIRST_
     }
 
 
-def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count_dict: dict,search_strategy="best",log=False):
+def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count_dict: dict,search_strategy=BEST_FIRST_SEARCH,log=False):
     machine_count = instance.get_machines_number()
     count_dict["explored"] += 1
     if log : print("exploring node: " + str(node.scheduled_jobs) + "/" + str(node.unscheduled_jobs))

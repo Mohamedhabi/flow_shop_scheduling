@@ -1,6 +1,5 @@
-
-from fsp.branch_and_bound import *
-from utils import Instance
+from fsp import parallel_bnb
+from utils import Instance,Benchmark
 import numpy as np
 import time
 #import argparse
@@ -52,7 +51,7 @@ instance4 = Instance(
 # )
 # print(str(randomInstance))
 tdfs1 = time.time() 
-result = get_results(instance4,search_strategy=DEPTH_FIRST_SEARCH,log=False)
+result = parallel_bnb.get_results(instance4,search_strategy=parallel_bnb.DEPTH_FIRST_SEARCH,log=False)
 tdfs2 = time.time()
 print(f"DFS took :{tdfs2 - tdfs1} s")
 order = result["order"]
@@ -60,7 +59,7 @@ cost = result["C_max"]
 print("Sequence === ",order)
 print(f"Cost {cost}")
 tbfs1 = time.time() 
-result = get_results(instance4,search_strategy=BEST_FIRST_SEARCH,log=False)
+result = parallel_bnb.get_results(instance4,search_strategy=parallel_bnb.BEST_FIRST_SEARCH,log=False)
 tbfs2 = time.time() 
 order = result["order"]
 cost = result["C_max"]
