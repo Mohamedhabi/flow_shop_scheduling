@@ -1,5 +1,6 @@
 from utils import Instance
 import numpy as np
+import time
 from sortedcontainers import SortedList
 def johnson_get_schedule(sequence : list):
     """
@@ -133,41 +134,84 @@ class Node:
          # the evaluation is the last value calculated
          self.eval = self.cost_array_row[machine-1]
 
+def generateInitialSequence(instance : Instance):
+    """
+    Generates the initial sequence of jobs to be used in branch and bound exact method with specific heuristique
+    Complexity O(n*m)
+    """
+    job_count = instance.get_jobs_number()
+    machine_count = instance.get_machines_number()
+    sum_costs =np.zeros(job_count)
+    list = range(job_count)
+    for job in list:
+        for machine in range(machine_count):
+            sum_costs[job] += instance.get_cost(job,machine) # total execution time
+    return sorted(list,key=lambda x : sum_costs[x])
 
+def evaluateSeqeunce(instance: Instance,sequence : tuple):
+    jobs_count = instance.get_jobs_number()
+    machine_count = instance.get_machines_number()
+    cost_array = np.zeros((jobs_count,machine_count))
+    job_index = 0
+    for job in sequence:
+        for machine in range(machine_count):
+            cost = instance.get_cost(job,machine)
+            top = 0 if job_index == 0 else cost_array[job_index-1][machine]
+            left = 0 if machine == 0 else cost_array[job_index][machine-1] 
+            cost_array[job_index][machine] = max(top,left) + cost
+        job_index += 1
+    return cost_array[jobs_count-1][machine_count-1]
 
-def general_case_branch_and_bound(instance :Instance,search_strategy=BEST_FIRST_SEARCH,log=False):
+def general_case_branch_and_bound(instance :Instance,search_strategy=BEST_FIRST_SEARCH,log=False,mesure=True):
     machine_count = instance.get_machines_number()
     jobs_count = instance.get_jobs_number()
     if log :
          print("machine count : " + str(machine_count))
          print("jobs count : " + str(jobs_count))
-    starting_seq = tuple(range(jobs_count))
+    starting_seq = tuple(generateInitialSequence(instance))
+    ##starting_seq = tuple(range(jobs_count))
+    print(starting_seq)
+    ##upper_bound = np.inf
+    ## to avoid using infinity as upper bound we assume the evaluation of starting sequence as upper bound
+    upper_bound = evaluateSeqeunce(instance,starting_seq) # O(n*m)
+    print(f"upper bound {upper_bound}")
     starting_node = Node([],starting_seq,machine_count)
-    starting_node.eval = np.inf
-    upper_bound = np.inf
+    starting_node.eval = upper_bound
     level = 0
-    count_dict = {
-        "explored" : 0,
-        "pruned" : 0,
-        "leaf" : 0
-    }
-    bestNode,cost = BandB(instance,level,starting_node,upper_bound,count_dict,search_strategy,log)
+    count_array = np.asarray([0,0,0]) # to optimize access [explored,pruned,leaf]
+    # count_dict = {
+    #     "explored" : 0,
+    #     "pruned" : 0,
+    #     "leaf" : 0
+    # }
+    if mesure :
+        start = time.perf_counter()
+    bestNode,cost = BandB(instance,level,starting_node,upper_bound,count_array,search_strategy,log)
+    if mesure :
+        end = time.perf_counter()
+    
     if log:
-        print("Nodes explored : " + str(count_dict["explored"]))
+        print("Nodes explored : " + str(count_array[0]))
         
-        print("Nodes pruned : " + str(count_dict["pruned"]))
+        print("Nodes pruned : " + str(count_array[1]))
         
-        print("Leafs reached : " + str(count_dict["leaf"]))
-        
+        print("Leafs reached : " + str(count_array[2]))
+        print(f"Time took {end - start} seconds")
     return {
         "C_max" :  cost,
-        "order" : bestNode.scheduled_jobs
+        "order" : bestNode.scheduled_jobs,
+        "details" : {
+            "explored" : count_array[0],
+            "pruned" : count_array[1],
+            "leafs" : count_array[2],
+            "time" : end - start,
+        }
     }
 
 
-def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count_dict: dict,search_strategy="best",log=False):
+def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count_array: np.ndarray,search_strategy="best",log=False):
     machine_count = instance.get_machines_number()
-    count_dict["explored"] += 1
+    count_array[0] += 1
     if log : print("exploring node: " + str(node.scheduled_jobs) + "/" + str(node.unscheduled_jobs))
     # this is a leef node can't be branched, we only calculate cost of this node
     ub = upper_bound
@@ -177,7 +221,7 @@ def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count
         if log : 
             print("leaf node : " + str(node.scheduled_jobs))
             print("leaf node cost: " + str(node.eval))
-        count_dict["leaf"] += 1
+        count_array[2] += 1
         return node , cost#,explored
     next_nodelist = None
     if search_strategy == BEST_FIRST_SEARCH:
@@ -213,7 +257,7 @@ def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count
         # we prune only when it is not a leaf node
         elif len(newnode.scheduled_jobs) < instance.get_jobs_number():
             if log : print("pruning node : " + str(newnode.scheduled_jobs) + "/" + str(newnode.unscheduled_jobs))
-            count_dict["pruned"] += 1
+            count_array[1] += 1
     # Applying Search strategy based on eval
     currentBest = node
     currentCost= ub
@@ -224,14 +268,14 @@ def BandB(instance: Instance,level : int ,node: Node,upper_bound: np.float,count
         if(next_node.eval <= currentCost):
             #explored +=1
             #passing currentCost as an upper bound
-            best, cost = BandB(instance,lvl,next_node,currentCost,count_dict,search_strategy,log)
+            best, cost = BandB(instance,lvl,next_node,currentCost,count_array,search_strategy,log)
             #explored += exp
             if cost < currentCost:
                 currentBest = best
                 currentCost = cost
                 #ub = cost # updating upper bound to prune branches
         else:
-            count_dict["pruned"] += 1
+            count_array[1] += 1
             if log : print("pruning node : " + str(newnode.scheduled_jobs) + "/" + str(newnode.unscheduled_jobs))
     if(len(currentBest.scheduled_jobs) == instance.get_jobs_number() and log) :
         print("best branch node : " + str(currentBest.scheduled_jobs))
