@@ -95,7 +95,7 @@ def johnson(instance : Instance):
 # params
 BEST_FIRST_SEARCH = 0
 DEPTH_FIRST_SEARCH = 1
-def get_results(instance : Instance,search_strategy=BEST_FIRST_SEARCH,log=False):
+def get_results(instance : Instance,search_strategy=BEST_FIRST_SEARCH,use_heuristique_init=True,log=False):
     """Get the results of the algorithm on the specified instance
 
     Args:
@@ -114,7 +114,7 @@ def get_results(instance : Instance,search_strategy=BEST_FIRST_SEARCH,log=False)
     if machine_count == 2:
         return johnson(instance)
     # if machine count is greater than 2, it is an NP-hard problem ==> apply branch and bound
-    return general_case_branch_and_bound(instance,search_strategy = search_strategy,log=log)
+    return general_case_branch_and_bound(instance,use_heuristique_init=use_heuristique_init,search_strategy = search_strategy,log=log)
 class Node:
      def __init__(self,scheduled,unscheduled,machine_count):
         self.eval = 0
@@ -162,15 +162,17 @@ def evaluateSeqeunce(instance: Instance,sequence : tuple):
         job_index += 1
     return cost_array[jobs_count-1][machine_count-1]
 
-def general_case_branch_and_bound(instance :Instance,search_strategy=BEST_FIRST_SEARCH,log=False,mesure=True):
+def general_case_branch_and_bound(instance :Instance,search_strategy=BEST_FIRST_SEARCH,log=False,mesure=True,use_heuristique_init=True):
     machine_count = instance.get_machines_number()
     jobs_count = instance.get_jobs_number()
     if log :
          print("machine count : " + str(machine_count))
          print("jobs count : " + str(jobs_count))
-    starting_seq = tuple(generateInitialSequence(instance))
-    ##starting_seq = tuple(range(jobs_count))
-    print(starting_seq)
+    if(use_heuristique_init):
+        starting_seq = tuple(generateInitialSequence(instance))
+    else:
+        starting_seq = tuple(range(jobs_count))
+    print("start seq" + str(starting_seq))
     ##upper_bound = np.inf
     ## to avoid using infinity as upper bound we assume the evaluation of starting sequence as upper bound
     upper_bound = evaluateSeqeunce(instance,starting_seq) # O(n*m)
