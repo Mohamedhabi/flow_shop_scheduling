@@ -19,7 +19,7 @@ def get_groups(seq, group_by):
 
 class Instance:
     """
-    Instance of the probleù
+    Instance of the problem
     """
     def __init__(self, instance_2d_array, upper_bound = None, lower_bound = None):
         self.np_array = instance_2d_array
