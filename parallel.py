@@ -51,7 +51,7 @@ instance4 = Instance(
 # ]).T
 # benchmark_13_5
 # instance = Instance(benchmark_13_5)
-benchmark = JsonBenchmark(10,5)
+benchmark = JsonBenchmark(9,4)
 ben = benchmark.get_instance_by_index(0)["instance"]
 instance = Instance(np.array(ben))
 #benchmark = Benchmark(20, 5, benchmark_folder = './benchmarks')
@@ -67,7 +67,10 @@ if __name__ == '__main__':
     result = parallel_bnb.get_results(instance,search_strategy=parallel_bnb.DEPTH_FIRST_SEARCH,log=False)
     tdfs2 = time.time()
     print(f"DFS took :{tdfs2 - tdfs1} s")
-    print(result)
+    print(result[0])
+    print(f"explored {result[1][0]}")
+    print(f"pruned {result[1][1]}")
+    print(f"leafs {result[1][2]}")
 # tbfs1 = time.time() 
 # result = parallel_bnb.get_results(instance4,search_strategy=parallel_bnb.BEST_FIRST_SEARCH,log=False)
 # tbfs2 = time.time() 

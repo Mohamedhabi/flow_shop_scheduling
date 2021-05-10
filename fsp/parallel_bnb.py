@@ -18,36 +18,52 @@ def get_results(instance : Instance,search_strategy=DEPTH_FIRST_SEARCH,log=False
         manager = mp.Manager()
         solutions = manager.dict()
         solutions.items()
-        parallelLocalBranchAndBound(nodes,instance,search_strategy,solutions,log)
+        parallelLocalBranchAndBound(nodes,instance,search_strategy,solutions,None,log)
         #print(solutions)
-        return pickBestFromSolutions(solutions.items())
+        return pickBestFromSolutions(solutions.items()),totalCounts(solutions.items())
     #print([(node.scheduled_jobs,node.eval) for node in nodes])
     #return solutions
+def totalCounts(sols_dict):
+    data = [0,0,0]
+    for key,val in sols_dict:
+        costs = val["costs"]
+        data[0]+=costs[0]
+        data[1]+=costs[1]
+        data[2]+=costs[2]
+    return data
 def pickBestFromSolutions(sols_dict):
     Cmax = np.inf
     best = None
     for key,val in sols_dict:
-        for sol in val:
+        for sol in val["solutions"]:
             solcmax =sol["C_max"] 
             if  solcmax< Cmax:
                 Cmax = solcmax
                 best = sol["order"]
     return {"C_max" : Cmax,"order" : best}
-def process_bnb_task(instance,nodes,level,upper_bound,process_id,sols_dict):
+def process_bnb_task(instance,nodes,level,upper_bound,process_id,sols_dict,counts):
     solutions = []
      # sequential 
+    #print(upper_bound)
+    costs = np.zeros(3)
+    ub = upper_bound
     for node in nodes:
-        currentbest,currentcost  = depthFirstSearchBranchAndBound(instance,node,level,upper_bound)
+        currentbest,currentcost  = depthFirstSearchBranchAndBound(instance,node,level,ub,costs)
+        if(currentcost < ub):
+            ub = currentcost
         solutions.append({
             "order" : currentbest.scheduled_jobs,
             "C_max" : currentcost
         })
     print(solutions)
-    sols_dict[process_id] = solutions
+    sols_dict[process_id] = {
+        "solutions" : solutions,
+        "costs" : costs.tolist()
+    }
 
-def parallelLocalBranchAndBound(nodes : list,instance : Instance,search_strategy,solutions,log):
+def parallelLocalBranchAndBound(nodes : list,instance : Instance,search_strategy,solutions,counts,log):
     process_count = min(mp.cpu_count(),len(nodes))
-    chunk = int(np.floor(len(nodes)/process_count))
+    #chunk = int(np.floor(len(nodes)/process_count))
     processes = []
     # spliting chunks 
     i = 0
@@ -60,8 +76,8 @@ def parallelLocalBranchAndBound(nodes : list,instance : Instance,search_strategy
     for i in range(process_count):
         print(f"creating process {i}")
         process_nodes = lists[i]
-        print(f"process {i} woring on : " + str(process_nodes))
-        p = mp.Process(target=process_bnb_task,args=(instance,process_nodes,1,np.inf,i,solutions))
+        print(f"process {i} woring on : " + str([node.unscheduled_jobs for node in process_nodes]))
+        p = mp.Process(target=process_bnb_task,args=(instance,process_nodes,1,np.inf,i,solutions,counts))
         processes.append(p)
         p.start()
 
@@ -91,9 +107,11 @@ def createExecutionNodes(instance : Instance):
         nodes.append(node)
     return nodes
 
-def depthFirstSearchBranchAndBound(instance : Instance, node : bnb.Node,level,upper_bound):
+def depthFirstSearchBranchAndBound(instance : Instance, node : bnb.Node,level,upper_bound,counts):
+    counts[0] += 1 # explored
     machine_count = instance.get_machines_number()
     if(len(node.unscheduled_jobs) == 0):
+        counts[2] += 1 # leaf
         cost = node.eval
         # if log : 
         #     print("leaf node : " + str(node.scheduled_jobs))
@@ -117,8 +135,12 @@ def depthFirstSearchBranchAndBound(instance : Instance, node : bnb.Node,level,up
         # if eval is greater or to than upper bound ==> dont add to nodelist (pruning the branch)
         # else add to an ordered list of nodes based on eval
         if newnode.eval < current_cost:
-            best,cost = depthFirstSearchBranchAndBound(instance,newnode,upper_bound=current_cost,level=(level+1))
+            best,cost = depthFirstSearchBranchAndBound(instance,newnode,(level+1),current_cost,counts)
             if(cost< current_cost):
                 current_best = best
                 current_cost = cost
+        else:
+            counts[1] += 1 # pruned
+            #print("pruning")
+        
     return current_best,current_cost
