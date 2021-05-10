@@ -1,5 +1,6 @@
 import numpy as np
 from datetime import datetime
+import json
 import re
 
 def convert_to_datetime(x):
@@ -19,7 +20,7 @@ def get_groups(seq, group_by):
 
 class Instance:
     """
-    Instance of the probleù
+    Instance of the problem
     """
     def __init__(self, instance_2d_array, upper_bound = None, lower_bound = None):
         self.np_array = instance_2d_array
@@ -101,3 +102,23 @@ class Benchmark:
     def get_instance(self, number):
         if number < self.number_of_instances:
             return self.instances[number]
+class JsonBenchmark():
+    def __init__(self, nb_jobs, nb_machines, benchmark_folder = './benchmarks'):
+        self.nb_jobs = nb_jobs
+        self.nb_machines = nb_machines
+        self.instances = []
+        self.number_of_instances = 0
+        with open(benchmark_folder+"/instances_"+str(nb_jobs)+'_'+str(nb_machines)+".json") as file:
+            data = json.load(file)
+            self.instances = data
+            self.number_of_instances = len(self.instances)
+    def get_instances_number(self):
+        return self.number_of_instances
+    #index starts at 0
+    def get_instance_by_index(self, index):
+        if index < self.number_of_instances:
+            return self.instances[index]   
+
+
+# benchmark = JsonBenchmark(11,6)
+# print(benchmark.get_instance_by_index(0)["instance"])
