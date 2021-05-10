@@ -67,23 +67,23 @@ def johnson(instance : Instance):
             "order" : the order of jobs scheduled on the machines
         }
     """
-    print("Johnshon optimal algorithm on 2-machine Instance : ")
+    #print("Johnshon optimal algorithm on 2-machine Instance : ")
     U,V = johnson_partition(instance)
-    print("U : " +str(U))
-    print("V : " +str(V))
+    #print("U : " +str(U))
+    #print("V : " +str(V))
     U = johnson_sort(U,1,False)
     V = johnson_sort(V,2,True)
-    print("U sorted : " +str(U))
-    print("V sorted : " +str(V))
+    #print("U sorted : " +str(U))
+    #print("V sorted : " +str(V))
     
     M = johnson_merge(U,V)
-    print("Sequence : " +str(M))
+    #print("Sequence : " +str(M))
     
     finM1,startM2,finM2 = johnson_get_schedule(M)
-    print("Schedule: ")
-    print("End on M1 " + str(finM1))
-    print("Start on M2 " + str(startM2))
-    print("End on M2 " + str(finM2))
+    #print("Schedule: ")
+    #print("End on M1 " + str(finM1))
+    #print("Start on M2 " + str(startM2))
+    #print("End on M2 " + str(finM2))
     ## return values
     cmax = finM2[-1][1] # date of finish of the last scheduled job on M2 
     order = [ job[0]  for job in M]

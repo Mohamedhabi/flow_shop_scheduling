@@ -3,7 +3,7 @@ import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import *
 import numpy as np
-from branch_and_bound import *
+from CDS import *
 def get_results(bench: Benchmark):
     """Get the results of the algorithm on the specified instance
 
@@ -18,31 +18,66 @@ def get_results(bench: Benchmark):
         "C_max": 13,
         "order":list(range(instance.get_jobs_number()))
         }
-def get_cds_sub_sequences(instance: Instance):
-    """an algorithem that create (m-1) 2-machines PFS instances from m-machine FPS instance
+def gupta_indice(j,jobCosts):
+    """an algorithem that calculates the indice of gupta for the job j with operations' time 
+
+    Args:
+        j : number of job 
+        jobCosts: an array that contains all operations' times for job j 
+
+    Returns:
+            indice 
+    """
+    indice = jobCosts[0] + jobCosts[1]; 
+    for i in range(len(jobCosts)-1):
+        if(indice > jobCosts[i+1] + jobCosts[i]):  
+            indice = jobCosts[i+1] + jobCosts[i]; 
+    return indice; 
+
+def gupta_partition(instance: Instance):
+    """an algorithem that create two lists of jobs U and V from the instance jobs 
 
     Args:
         instance (class:instancdce): an FPS instance
 
     Returns:
         {
-            "nb_sequences" : the number of 2-machines FPS instance created
-            "sequences" : an array of nb_sequences FPS instances created
+            "U" : a list of jobs that verify Tj1 < Tjm 
+            "V" : J - U
         }
     """
     m = instance.get_machines_number(); 
     n = instance.get_jobs_number(); 
-    sequences = []; 
-    for i in range(m-1):
-        instance_two_machines = np.zeros((n,2)); 
-        for j in range(i+1):
-            instance_two_machines[:,0] += instance.get_machine_costs(j); 
-            instance_two_machines[:,1] += instance.get_machine_costs(m-j-1); 
-        sequences.append(Instance(instance_two_machines)); 
+    U = []
+    V = []
+    for i in range(n):
+        jobCosts = instance.get_job_costs(i); 
+        if (jobCosts[0]<jobCosts[m-1]):
+            indice = gupta_indice(i,jobCosts); 
+            U.append((i,indice)); 
+        else: 
+            indice = gupta_indice(i,jobCosts); 
+            V.append((i,indice)); 
     return {
-        "nb_sequences" : m-1,
-        "sequences" : sequences
+        "U" : U,
+        "V" : V
     }
+def gupta(instance: Instance):
+    partition = gupta_partition(instance); 
+    U = partition['U']; 
+    V = partition['V']; 
+    U.sort(key=lambda x: x[1], reverse=True); 
+    V.sort(key=lambda x: x[1], reverse=False); 
+    U.extend(V); 
+    schedule = []
+    for i in U:
+        schedule.append(i[0]); 
+    C_max = makespan(instance,schedule); 
+    return {
+        "C_max": C_max,
+        "order": schedule
+    } 
+
 def makespan(instance: Instance, schedule: list): 
     C_max = 0; # makespan 
     n = instance.get_jobs_number(); # number of jobs in the instance 
@@ -65,37 +100,11 @@ def makespan(instance: Instance, schedule: list):
     C_max = completionTimes[schedule[len(schedule)-1],m-1]; 
     return C_max; 
 
-def cds(instance: Instance):
-    """an Optimal O(m*nlogn) algorithm for solving the PFSP (n jobs, m machines) based on jhonson's algorithem
-
-    Args:
-        instance (class:instance): an FPS instance
-
-    Returns:
-        {
-            "C_max" : the cost of the provided sequence 
-            "order" : the order of jobs scheduled on the machines
-        }
-    """
-    #creation of (m-1) virtual 2-machines PFS problem: 
-    output = get_cds_sub_sequences(instance); 
-    m = output['nb_sequences'] + 1; 
-    sequences = output['sequences']; 
-    C_max = 0;  
-    order = []; 
-    for i in range(m-1): 
-        #calculate the order using jhonson algorithem: 
-        schedule = johnson(sequences[i]); 
-        o = schedule['order']; 
-        c = makespan(instance,o); 
-        if(i==0):
-            C_max = c; 
-            order = o; 
-        else:
-            if(c<C_max):
-                C_max = c; 
-                order = o; 
-    return {
-        "C_max": C_max,
-        "order": order
-    } 
+benchmark = Benchmark(20, 5, benchmark_folder = '../benchmarks')
+instance = benchmark.get_instance(2)
+out=gupta(instance)
+out1=cds(instance)
+print(out['C_max'])
+print(*out['order'])
+print(out1['C_max'])
+print(*out1['order'])
