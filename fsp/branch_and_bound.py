@@ -67,7 +67,7 @@ def johnson(instance : Instance):
             "order" : the order of jobs scheduled on the machines
         }
     """
-    print("Johnshon optimal algorithm on 2-machine Instance : ")
+    #print("Johnshon optimal algorithm on 2-machine Instance : ")
     U,V = johnson_partition(instance)
     U = johnson_sort(U,1,False)
     V = johnson_sort(V,2,True)
