@@ -26,7 +26,7 @@ def instance_file_to_numbers(file):
 
 def run_bnb(jobs_number,machines_number,instance_number):
     jsonbenchmark = JsonBenchmark(jobs_number,machines_number,benchmark_folder="./benchmarks")
-    instance = jsonbenchmark.get_instance_by_index(0)["instance"]
+    instance = jsonbenchmark.get_instance_by_index(instance_number)["instance"]
     instance = Instance(np.asarray(instance))
     results = branch_and_bound.get_results(instance,search_strategy=branch_and_bound.DEPTH_FIRST_SEARCH)
     print(results)
