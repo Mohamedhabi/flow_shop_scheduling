@@ -193,9 +193,9 @@ def general_case_branch_and_bound(instance :Instance,search_strategy=BEST_FIRST_
         "C_max" :  cost,
         "order" : bestNode.scheduled_jobs,
         "details" : {
-            "explored" : count_array[0],
-            "pruned" : count_array[1],
-            "leafs" : count_array[2],
+            "explored" : int(count_array[0]),
+            "pruned" : int(count_array[1]),
+            "leafs" : int(count_array[2]),
             "time" : end - start,
         }
     }
