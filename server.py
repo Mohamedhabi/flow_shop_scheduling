@@ -25,12 +25,11 @@ def instance_file_to_numbers(file):
     } 
 
 def run_bnb(jobs_number,machines_number,instance_number):
-    sleep(1)
-    print(jobs_number,machines_number,instance_number)
     jsonbenchmark = JsonBenchmark(jobs_number,machines_number,benchmark_folder="./benchmarks")
     instance = jsonbenchmark.get_instance_by_index(0)["instance"]
     instance = Instance(np.asarray(instance))
-    results = parallel_bnb.get_results(instance,search_strategy=branch_and_bound.DEPTH_FIRST_SEARCH)
+    results = branch_and_bound.get_results(instance,search_strategy=branch_and_bound.DEPTH_FIRST_SEARCH)
+    print(results)
     with open(get_result_file_namr(jobs_number,machines_number,instance_number), 'w+') as f:
         json.dump(results , f)
     
