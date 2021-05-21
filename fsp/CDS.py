@@ -3,7 +3,7 @@ import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import *
 import numpy as np
-from branch_and_bound import *
+from .branch_and_bound import *
 def get_results(bench: Benchmark):
     """Get the results of the algorithm on the specified instance
 
