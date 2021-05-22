@@ -43,6 +43,9 @@ class Instance:
     def get_machines_number(self):
         return self.np_array.shape[1]
 
+    def get_array(self):
+        return self.np_array
+
     def get_chart_data(self, results):
         # result: {'C_max': 13, 'order': [0, 1, 2]}
         machine_free = np.zeros(self.get_machines_number())
@@ -66,6 +69,28 @@ class Instance:
             'num_tick_labels':num_tick_labels,
             'date_ticks':date_ticks
             }
+
+    def makespan(self, schedule): 
+        C_max = 0 # makespan 
+        n = self.get_jobs_number() # number of jobs in the instance 
+        m = self.get_machines_number() # number of machines 
+        completionTimes = np.zeros((n,m)) #an (n,m) array that gives the completion time for a job i in machine j 
+        #we iterate over the schedule list, foreach job, we calculate its completion time on all machines 
+        for i in range(len(schedule)):
+            jobCosts = self.get_job_costs(schedule[i]) # an array of all operations' time for job i 
+            if(i==0):
+                completionTimes[schedule[i],:] = jobCosts 
+            else:
+                for j in range(m):
+                    if(j == 0): #case when we are in the first operation for th i'th job 
+                        completionTimes[schedule[i],j] = completionTimes[schedule[i-1],j] +jobCosts[j]
+                    else:
+                        if(completionTimes[schedule[i],j-1] > completionTimes[schedule[i-1],j]):
+                            completionTimes[schedule[i],j] = completionTimes[schedule[i],j-1]+jobCosts[j] 
+                        else: 
+                            completionTimes[schedule[i],j] = completionTimes[schedule[i-1],j]+jobCosts[j] 
+        C_max = completionTimes[schedule[len(schedule)-1],m-1]
+        return C_max
 
 class Benchmark:
     """
@@ -102,6 +127,7 @@ class Benchmark:
     def get_instance(self, number):
         if number < self.number_of_instances:
             return self.instances[number]
+
 class JsonBenchmark():
     def __init__(self, nb_jobs, nb_machines, benchmark_folder = './benchmarks'):
         self.nb_jobs = nb_jobs
@@ -112,8 +138,10 @@ class JsonBenchmark():
             data = json.load(file)
             self.instances = data
             self.number_of_instances = len(self.instances)
+
     def get_instances_number(self):
         return self.number_of_instances
+
     #index starts at 0
     def get_instance_by_index(self, index):
         if index < self.number_of_instances:
