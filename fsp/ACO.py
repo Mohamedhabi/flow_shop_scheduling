@@ -3,6 +3,7 @@ import sys
 sys.path.append("../")
 from utils import Instance, Benchmark,JsonBenchmark
 import threading
+import time
 
 class Ant:
     def __init__(self, instance):
@@ -132,9 +133,21 @@ class Colony:
              self.best_sequence = best_ant.scheduledJobs
     
     def run(self, nb_rounds = 10, parallel = False, threads = 8, local_search = False, local_search_proba = 0.02):
+        start = time.time()
         for _ in range(nb_rounds):
             self.lunch_round(parallel, threads, local_search, local_search_proba)
+        return {
+        "C_max" :  self.makespan,
+        "order" : self.best_sequence,
+        "time" : time.time() - start,
+        }
 
+def get_results(
+    instance, initValue = 2, nbAnts = 5, rho = .5, alpha = 1, beta = 1, Z = 1, heuristic_info_strategy = 'min', 
+    nb_rounds = 10, parallel = False, threads = 8, local_search = False, local_search_proba = 0.02):
+
+    colony = Colony(instance, initValue, nbAnts, rho, alpha, beta, Z, heuristic_info_strategy)
+    return colony.run(nb_rounds, parallel, threads, local_search, local_search_proba)
 
 instance = Instance(
     np.array([
