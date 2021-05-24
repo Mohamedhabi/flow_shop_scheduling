@@ -10,15 +10,14 @@ Original file is located at
 from utils import Instance,Benchmark
 import numpy as np
 import itertools as iter
+import random,time,json
 
 benchmark=Benchmark(5,5,benchmark_folder='./benchmarks')
 ben=benchmark.get_instance(0)
-ben.np_array
 
 def get_sequences(instance : Instance):#for what?
     jobs_count = instance.get_jobs_number()
     return list(iter.permutations(range(jobs_count)))
-get_sequences(ben)
 
 def generate_initsol(instance: Instance,popul_size=3):#returns an np array containing jobs permutations
   #initial array
@@ -31,9 +30,6 @@ def generate_initsol(instance: Instance,popul_size=3):#returns an np array conta
   res=np.array(res)
   res=np.unique(res,axis=0)
   return res,len(res)
-init_sol,pop= generate_initsol(ben,10)
-#init_sol=np.unique(init_sol,axis=0)
-init_sol
 
 def Cmax(instance: Instance, chromosome):
   n=instance.get_jobs_number()
@@ -47,15 +43,9 @@ def Cmax(instance: Instance, chromosome):
         span[j]=max(span[j-1],span[j])+ ben.np_array[chromosome[i]][j]
   return span[m-1]
 
-Cmax(ben,init_sol[0])
-
 #Fitness function: un individu a une forte probabilité de se reproduire si il a une bonne qualité (c-à-d une grande valeur de fitness)
 def fitness(instance: Instance, chromosome):
   return 1/Cmax(instance,chromosome)
-fits=np.array([])
-for i in range(len(init_sol)):
-  fits=np.append(fits,fitness(ben,init_sol[i]))
-fits
 
 #Selection: sélectionne certaines solutions pour former la population
 # intermédiaire afin de lui appliquer les opérateurs de croisement et de mutation. 
@@ -76,8 +66,6 @@ def selection(popul,size,Pc,fits):
   matting_pool=np.array(matting_pool)
   matting_pool=np.unique(matting_pool,axis=0)
   return matting_pool
-matting_pool=selection(init_sol,8,0.9,fits)
-matting_pool
 
 import random
 matting_pool=selection(init_sol,8,0.9,fits)
@@ -125,8 +113,6 @@ def crossover(n,matting_pool,Pc):
     offsprings.append(offspring)
   return offsprings
 
-crossover(5,matting_pool,0.5)
-
 #Mutation: consiste à choisir un ou deux bits aléatoirement, puis les inverser. L'opérateur de mutation s'applique avec une certaine probabilité Pm, appelée
 #taux de mutation
 # Dans le cas d'une mutation par changement de poste, une tâche située à un poste est supprimée et placée à un autre poste. Ensuite, tous les autres postes 
@@ -149,7 +135,6 @@ def mutation(n,offsprings,Pm):
     offspring[pos[0]] = remJob
   offsprings=np.array(offsprings)
   return offsprings
-mutation(5,offsprings,1)
 
 #new_generation: la nouvelle génération est constituée des meilleurs individus de la population
 offsprings=mutation(5,offsprings,1)
@@ -178,9 +163,8 @@ def new_generation(n,init_sol,popul_size,fits):
               break
           
   return new_gen
-new_generation(5,init_sol,10,fits)
 
-import random,time,json
+
 def get_results(instance : Instance,popul_size,nb_generations,Pc,Pm):
   j=0
   n=instance.get_jobs_number()
@@ -232,7 +216,6 @@ def get_results(instance : Instance,popul_size,nb_generations,Pc,Pm):
   ind=np.where(fits==fits_sorted[0])#find the index of the best solution in the population
   best_sol=new_gen[ind[0][0]]
   end = time.time()
-  print(end - start)
   result={
       "C_max":Cmax(ben,best_sol),
       "order":best_sol.tolist(),
@@ -240,6 +223,5 @@ def get_results(instance : Instance,popul_size,nb_generations,Pc,Pm):
   }
 
   return json.dumps(result)
-result=get_results(ben,10,5,0.9,0.1)
-print(result)
+get_results(ben,10,5,0.9,0.1)
 
