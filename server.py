@@ -53,7 +53,7 @@ def results_bnb():
     jobs_number = int(request.args.get('jobs'))
     machines_number = int(request.args.get('machines'))
     instance_number = int(request.args.get('instance'))
-    file_name = get_result_file_namr(jobs_number,machines_number,instance_number)
+    file_name = get_result_file_name(jobs_number,machines_number,instance_number)
     if os.path.isfile(file_name):
         with open(file_name) as file:
             return json.load(file) 
