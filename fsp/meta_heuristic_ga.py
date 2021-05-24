@@ -68,7 +68,6 @@ def selection(popul,size,Pc,fits):
   return matting_pool
 
 import random
-matting_pool=selection(init_sol,8,0.9,fits)
 #Crossover: interchanger les gènes situés entres les points considérés et est appliqué avec une probabilité Pc.
 #On utilisera ici le croisement à 2 points car des études faites ont constaté que ce type de croisement est très efficace pour le FSP
 def crossover(n,matting_pool,Pc):
@@ -117,7 +116,6 @@ def crossover(n,matting_pool,Pc):
 #taux de mutation
 # Dans le cas d'une mutation par changement de poste, une tâche située à un poste est supprimée et placée à un autre poste. Ensuite, tous les autres postes 
 #sont déplacés en conséquence. Les deux positions sont choisies au hasard.
-offsprings=crossover(5,matting_pool,0.5)
 def mutation(n,offsprings,Pm):
   for offspring in offsprings:
     pos = np.random.choice(n, size=2, replace=False)
@@ -137,13 +135,6 @@ def mutation(n,offsprings,Pm):
   return offsprings
 
 #new_generation: la nouvelle génération est constituée des meilleurs individus de la population
-offsprings=mutation(5,offsprings,1)
-init_sol=np.concatenate((init_sol,offsprings),axis=0)
-#print("\n",init_sol,len(init_sol))
-fits=np.array([])
-for i in range(len(init_sol)):
-  fits=np.append(fits,fitness(ben,init_sol[i]))#fits déja calculés
-
 def new_generation(n,init_sol,popul_size,fits):
   new_gen=np.array([])
   new_gen=selection(init_sol,popul_size,1,fits)
