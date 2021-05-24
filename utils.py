@@ -84,26 +84,18 @@ class Instance:
         Returns:
             e: completion time of the last job in the last machine (int)
         """
-        C_max = 0 # makespan 
-        n = self.get_jobs_number() # number of jobs in the instance 
-        m = self.get_machines_number() # number of machines 
-        completionTimes = np.zeros((n,m)) #an (n,m) array that gives the completion time for a job i in machine j 
-        #we iterate over the schedule list, foreach job, we calculate its completion time on all machines 
-        for i in range(len(schedule)):
-            jobCosts = self.get_job_costs(schedule[i]) # an array of all operations' time for job i 
-            if(i==0):
-                completionTimes[schedule[i],:] = jobCosts 
-            else:
-                for j in range(m):
-                    if(j == 0): #case when we are in the first operation for th i'th job 
-                        completionTimes[schedule[i],j] = completionTimes[schedule[i-1],j] +jobCosts[j]
-                    else:
-                        if(completionTimes[schedule[i],j-1] > completionTimes[schedule[i-1],j]):
-                            completionTimes[schedule[i],j] = completionTimes[schedule[i],j-1]+jobCosts[j] 
-                        else: 
-                            completionTimes[schedule[i],j] = completionTimes[schedule[i-1],j]+jobCosts[j] 
-        C_max = completionTimes[schedule[len(schedule)-1],m-1]
-        return C_max
+        jobs_count = self.get_jobs_number()
+        machine_count = self.get_machines_number()
+        cost_array = np.zeros((jobs_count,machine_count))
+        job_index = 0
+        for job in schedule:
+            for machine in range(machine_count):
+                cost = self.get_cost(job,machine)
+                top = 0 if job_index == 0 else cost_array[job_index-1][machine]
+                left = 0 if machine == 0 else cost_array[job_index][machine-1] 
+                cost_array[job_index][machine] = max(top,left) + cost
+            job_index += 1
+        return cost_array[jobs_count-1][machine_count-1]
 
 class Benchmark:
     """
