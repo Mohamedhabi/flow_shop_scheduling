@@ -175,7 +175,7 @@ class Colony:
         }
 
 def get_results(
-    instance, initValue = 10**(-6), nbAnts = 12, rho = 0.01, alpha = 1, beta = 0.0001, q0 = 0.97, heuristic_info_strategy = 'min', 
+    instance, initValue = 10**(-6), nbAnts = 5, rho = 0.01, alpha = 1, beta = 0.0001, q0 = 0.97, heuristic_info_strategy = 'min', 
     nb_rounds = 2500, parallel = False, threads = 12, local_search = True, local_search_proba = 0.02):
     
     colony = Colony(instance, initValue, nbAnts, rho, alpha, beta, q0, heuristic_info_strategy)

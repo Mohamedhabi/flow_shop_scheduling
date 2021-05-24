@@ -55,7 +55,6 @@ def selection(popul,size,Pc,fits):
   fits_copy=fits.copy()
   fits_copy[::-1].sort()
   selected_fits=fits_copy[:pool_size]
-  print(selected_fits)
   matting_pool=[]
   i=0
   while i<pool_size:
@@ -103,7 +102,6 @@ def crossover(n,matting_pool,Pc):
       parts_parent1[first_pt+1:first_pt+(n-second_pt)+1]=parent1[second_pt:n]
     else:
       parts_parent1[first_pt:first_pt+(n-second_pt)+1]=parent1[second_pt:n]
-    #print(parts_parent1)
     idx=first_pt
     for i in parent2:
       if (i not in parts_parent1):
@@ -142,7 +140,6 @@ def new_generation(n,init_sol,popul_size,fits):
     adds=popul_size-len(new_gen)
     i=0
     k=0
-    print(new_gen)
     while i<adds:
         for j in init_sol:
           j=np.array(j)
@@ -164,35 +161,27 @@ def get_results(instance=ben,popul_size=12,nb_generations=50,Pc=0.9,Pm=0.06):
 
     #Generate an inital population
     init_pop,size=generate_initsol(instance,popul_size)
-    print("old population",init_pop)
 
     #Reproduction: pick the best chromosomes (tournament selection)
     #evaluation
     fits=np.array([])
     for i in range(len(init_pop)):
       fits=np.append(fits,fitness(ben,init_pop[i]))#fits déja calculés
-    #print("fits",fits)
     #reproduction
-    print(size)
     matting_pool=selection(init_pop,size,Pc,fits)
-    print("matting_pool",matting_pool)
 
     #Crossover: 
     offsprings=crossover(n,matting_pool,Pc)
 
     #Mutation
     offsprings=mutation(n,offsprings,Pm)
-    print("offsprings",offsprings)
     #Selection: 
     init_pop=np.concatenate((init_pop,offsprings),axis=0)
-    print("total",init_pop)
     #evaluation
     fits=np.array([])
     for i in range(len(init_pop)):
       fits=np.append(fits,fitness(ben,init_pop[i]))#fits déja calculés
-    #print("fits",fits)
     new_gen=new_generation(n,init_pop,popul_size,fits)
-    print("new population",new_gen)
     j+=1
   
   #End While, select the best solution from the last generation.
@@ -200,7 +189,6 @@ def get_results(instance=ben,popul_size=12,nb_generations=50,Pc=0.9,Pm=0.06):
   fits=np.array([])
   for i in range(len(new_gen)):
     fits=np.append(fits,fitness(ben,new_gen[i]))#fits déja calculés
-  print("fits",fits)
 
   fits_sorted=fits.copy()
   fits_sorted[::-1].sort()
@@ -213,6 +201,4 @@ def get_results(instance=ben,popul_size=12,nb_generations=50,Pc=0.9,Pm=0.06):
       "time":end-start
   }
 
-  return json.dumps(result)
-get_results()
-
+  return result
