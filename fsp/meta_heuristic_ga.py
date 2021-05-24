@@ -12,7 +12,7 @@ import numpy as np
 import itertools as iter
 import random,time,json
 
-benchmark=Benchmark(5,5,benchmark_folder='./benchmarks')
+benchmark=Benchmark(20,5,benchmark_folder='./benchmarks')
 ben=benchmark.get_instance(0)
 
 def get_sequences(instance : Instance):#for what?
@@ -165,7 +165,7 @@ def new_generation(n,init_sol,popul_size,fits):
   return new_gen
 
 
-def get_results(instance : Instance,popul_size,nb_generations,Pc,Pm):
+def get_results(instance=ben,popul_size=12,nb_generations=50,Pc=0.9,Pm=0.06):
   j=0
   n=instance.get_jobs_number()
   start=time.time()
@@ -223,5 +223,5 @@ def get_results(instance : Instance,popul_size,nb_generations,Pc,Pm):
   }
 
   return json.dumps(result)
-get_results(ben,10,5,0.9,0.1)
+get_results()
 
