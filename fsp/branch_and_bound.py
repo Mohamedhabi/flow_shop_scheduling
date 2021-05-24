@@ -127,7 +127,7 @@ class Node:
 def generateInitialSequence(instance : Instance):
     """
     Generates the initial sequence of jobs to be used in branch and bound exact method with specific heuristique
-    Complexity O(n*m)
+    Complexity O(n*m + nlog(n))
     """
     job_count = instance.get_jobs_number()
     machine_count = instance.get_machines_number()

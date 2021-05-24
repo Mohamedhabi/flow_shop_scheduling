@@ -17,7 +17,7 @@ def get_results(instance : Instance,search_strategy=DEPTH_FIRST_SEARCH,log=False
     if scope == LOCAL:
         manager = mp.Manager()
         solutions = manager.dict()
-        solutions.items()
+        #solutions.items()
         parallelLocalBranchAndBound(nodes,instance,search_strategy,solutions,None,log)
         #print(solutions)
         return pickBestFromSolutions(solutions.items()),totalCounts(solutions.items())

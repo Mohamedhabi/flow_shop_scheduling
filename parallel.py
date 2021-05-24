@@ -1,5 +1,5 @@
 from multiprocessing.spawn import freeze_support
-from fsp import parallel_bnb
+from fsp import parallel_bnb,branch_and_bound
 from utils import Instance,Benchmark, JsonBenchmark
 import numpy as np
 import time
@@ -51,8 +51,8 @@ instance4 = Instance(
 # ]).T
 # benchmark_13_5
 # instance = Instance(benchmark_13_5)
-benchmark = JsonBenchmark(9,4)
-ben = benchmark.get_instance_by_index(0)["instance"]
+benchmark = JsonBenchmark(6,5)
+ben = benchmark.get_instance_by_index(1)["instance"]
 instance = Instance(np.array(ben))
 #benchmark = Benchmark(20, 5, benchmark_folder = './benchmarks')
 # random_mat = np.random.rand(9,3) * 100
@@ -62,6 +62,7 @@ instance = Instance(np.array(ben))
 #     random_mat
 # )
 # print(str(randomInstance))
+time1=None
 if __name__ == '__main__':
     tdfs1 = time.time() 
     result = parallel_bnb.get_results(instance,search_strategy=parallel_bnb.DEPTH_FIRST_SEARCH,log=False)
@@ -71,6 +72,7 @@ if __name__ == '__main__':
     print(f"explored {result[1][0]}")
     print(f"pruned {result[1][1]}")
     print(f"leafs {result[1][2]}")
+    time1 = tdfs2 - tdfs1
 # tbfs1 = time.time() 
 # result = parallel_bnb.get_results(instance4,search_strategy=parallel_bnb.BEST_FIRST_SEARCH,log=False)
 # tbfs2 = time.time() 
@@ -82,3 +84,16 @@ if __name__ == '__main__':
 # print(f"BFS took :{tbfs2 - tbfs1} s")
 
 ##print(f"Cost : {johnshon_calculateCost(instance)} time unit")
+jsonbenchmark = JsonBenchmark(6,5,benchmark_folder="./benchmarks")
+instance = jsonbenchmark.get_instance_by_index(1)["instance"]
+instance = Instance(np.asarray(instance))
+time2 =None
+if __name__ == '__main__':
+    tdfs1 = time.time() 
+    result = branch_and_bound.get_results(instance,search_strategy=branch_and_bound.DEPTH_FIRST_SEARCH,log=False)
+    tdfs2 = time.time()
+    print(f"DFS took :{tdfs2 - tdfs1} s")
+    print(result)
+    time2 = tdfs2 - tdfs1
+    print(f"Acceleration {time2/time1}")
+
