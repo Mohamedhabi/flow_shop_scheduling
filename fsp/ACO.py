@@ -28,7 +28,7 @@ class Ant:
                 sum = unscheduledJobs_function.sum()
                 j = np.random.choice(list(range(nb_jobs)), 1, p = (unscheduledJobs_function / sum))[0]
             
-            self.scheduledJobs.append(j)
+            self.scheduledJobs.append(int(j))
         self.makespan = self.instance.makespan(self.scheduledJobs)
 
         if local_search:
@@ -155,7 +155,7 @@ class Colony:
              self.best_sequence = best_ant.scheduledJobs
     
     def run(self, nb_rounds = 10, parallel = False, threads = 8, local_search = False, local_search_proba = 0.02):
-        start = time.time()
+        start = time.perf_counter()
         if parallel:
             jobs = self.create_threads(threads, nb_rounds, local_search , local_search_proba)
             for j in jobs:
@@ -169,39 +169,39 @@ class Colony:
                 self.round_update()
 
         return {
-        "C_max" :  self.makespan,
-        "order" : self.best_sequence,
-        "time" : time.time() - start,
+            "C_max" :  self.makespan,
+            "order" : self.best_sequence,
+            "time" : time.perf_counter() - start,
         }
 
 def get_results(
     instance, initValue = 10**(-6), nbAnts = 12, rho = 0.01, alpha = 1, beta = 0.0001, q0 = 0.97, heuristic_info_strategy = 'min', 
-    nb_rounds = 2500, parallel = True, threads = 12, local_search = True, local_search_proba = 0.02):
-
-    colony = Colony(instance, initValue, nbAnts, rho, alpha, beta, heuristic_info_strategy)
+    nb_rounds = 2500, parallel = False, threads = 12, local_search = True, local_search_proba = 0.02):
+    
+    colony = Colony(instance, initValue, nbAnts, rho, alpha, beta, q0, heuristic_info_strategy)
     return colony.run(nb_rounds, parallel, threads, local_search, local_search_proba)
 
-instance = Instance(
-    np.array([
-        [1,2,3,2],
-        [1,4,2,10],
-        [3,2,1,5],
-        [4,10,3,1],
-        [1,5,4,4],
-        [2,3,2,6],
-        [5,2,1,1],
-        [2,3,2,6],
-        [5,2,1,1],
-    ], dtype=np.int64)
-)
-benchmark = Benchmark(200, 20, benchmark_folder = '../benchmarks')
-instance = benchmark.get_instance(0)
+# instance = Instance(
+#     np.array([
+#         [1,2,3,2],
+#         [1,4,2,10],
+#         [3,2,1,5],
+#         [4,10,3,1],
+#         [1,5,4,4],
+#         [2,3,2,6],
+#         [5,2,1,1],
+#         [2,3,2,6],
+#         [5,2,1,1],
+#     ], dtype=np.int64)
+# )
+# benchmark = Benchmark(200, 20, benchmark_folder = '../benchmarks')
+# instance = benchmark.get_instance(0)
 
-cl = Colony(instance, nbAnts = 12)
+# cl = Colony(instance, nbAnts = 12)
 
-print(cl.run(nb_rounds = 200, parallel = True, threads = 12, local_search = False, local_search_proba = 0.02))
-cl = Colony(instance, nbAnts = 12)
+# print(cl.run(nb_rounds = 200, parallel = True, threads = 12, local_search = False, local_search_proba = 0.02))
+# cl = Colony(instance, nbAnts = 12)
 
-print(cl.run(nb_rounds = 200, parallel = False, threads = 12, local_search = False, local_search_proba = 0.02))
-print(instance.makespan([1, 0, 2, 4, 5, 7, 3, 8, 6]))
-print(instance.makespan([0, 2, 1, 4, 5, 8, 3, 7, 6]))
+# print(cl.run(nb_rounds = 200, parallel = False, threads = 12, local_search = False, local_search_proba = 0.02))
+# print(instance.makespan([1, 0, 2, 4, 5, 7, 3, 8, 6]))
+# print(instance.makespan([0, 2, 1, 4, 5, 8, 3, 7, 6]))

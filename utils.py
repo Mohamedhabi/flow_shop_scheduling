@@ -70,7 +70,20 @@ class Instance:
             'date_ticks':date_ticks
             }
 
-    def makespan(self, schedule): 
+    def makespan(self, schedule):
+        """Calculate completion times for each job in each machine.
+
+        Arguments:
+            sequence: Numpy array with Current sequence
+            processing_times: Numpy 2d array with processing times.
+            num_machines: Number of machines in this problem.
+            return_array: If 1 return array with each completition time,
+            if 0 return just an integer with the completion time of the
+            last job in the last machine.
+
+        Returns:
+            e: completion time of the last job in the last machine (int)
+        """
         C_max = 0 # makespan 
         n = self.get_jobs_number() # number of jobs in the instance 
         m = self.get_machines_number() # number of machines 

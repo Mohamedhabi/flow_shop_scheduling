@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 OUTPUT_FOLDER = 'results'
 
-def get_result_file_namr(jobs_number,machines_number,instance_number):
+def get_result_file_name(jobs_number,machines_number,instance_number):
     return OUTPUT_FOLDER+'/bnb/res_'+ '%d_%d_%d' % (jobs_number,machines_number,instance_number)+".json"
 
 def instance_file_to_numbers(file):
@@ -30,7 +30,7 @@ def run_bnb(jobs_number,machines_number,instance_number):
     instance = Instance(np.asarray(instance))
     results = branch_and_bound.get_results(instance,search_strategy=branch_and_bound.DEPTH_FIRST_SEARCH)
     print(results)
-    with open(get_result_file_namr(jobs_number,machines_number,instance_number), 'w+') as f:
+    with open(get_result_file_name(jobs_number,machines_number,instance_number), 'w+') as f:
         json.dump(results , f)
     
 @app.route("/")
