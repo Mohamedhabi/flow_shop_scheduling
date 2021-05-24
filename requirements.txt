@@ -3,3 +3,4 @@ numpy
 matplotlib
 itertools
 sortedcontainers
+flask

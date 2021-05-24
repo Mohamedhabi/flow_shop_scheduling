@@ -1,3 +1,6 @@
 *.pyc
 __pycache__
 .vscode
+benchmarks/tai50*
+benchmarks/tai200*
+benchmarks/tai100*
