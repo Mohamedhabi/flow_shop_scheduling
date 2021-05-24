@@ -145,7 +145,7 @@ def taillard_acceleration(sequence,processing_times,inserting_job, num_machines)
     f = np.zeros((sequence_length+2,num_machines+2), dtype='int64')
     ms = np.zeros(sequence_length+2, dtype='int64')
 
-    for i in range(1,sequence_length + 2):
+    for i in range(1,sequence_length + 1):
         if i < sequence_length :
             iq =iq-1
             e[i][0] = 0
@@ -175,7 +175,7 @@ def taillard_acceleration(sequence,processing_times,inserting_job, num_machines)
 
     best_makespan = 0
     best_position = 0
-    for i in range(1,sequence_length + 2):
+    for i in range(1,sequence_length + 1):
         ms[i] = 0
         for j in range(1,num_machines+1):
             tmp = f[i][j] +	q[i][j]
