@@ -31,21 +31,10 @@ def generate_initsol(instance: Instance,popul_size=3):#returns an np array conta
   res=np.unique(res,axis=0)
   return res,len(res)
 
-def Cmax(instance: Instance, chromosome):
-  n=instance.get_jobs_number()
-  m=instance.get_machines_number()
-  span=np.zeros(m)
-  for i in range(n):
-    for j in range(m):
-      if (j==1):
-        span[j]+=ben.np_array[chromosome[i]][j]
-      else:
-        span[j]=max(span[j-1],span[j])+ ben.np_array[chromosome[i]][j]
-  return span[m-1]
 
 #Fitness function: un individu a une forte probabilité de se reproduire si il a une bonne qualité (c-à-d une grande valeur de fitness)
 def fitness(instance: Instance, chromosome):
-  return 1/Cmax(instance,chromosome)
+  return 1/instance.makespan(chromosome)
 
 #Selection: sélectionne certaines solutions pour former la population
 # intermédiaire afin de lui appliquer les opérateurs de croisement et de mutation. 
@@ -153,7 +142,7 @@ def new_generation(n,init_sol,popul_size,fits):
   return new_gen
 
 
-def get_results(instance=ben,popul_size=12,nb_generations=50,Pc=0.9,Pm=0.06):
+def get_results(instance=ben,popul_size=12,nb_generations=2500,Pc=0.9,Pm=0.06):
   j=0
   n=instance.get_jobs_number()
   start=time.time()
@@ -196,7 +185,7 @@ def get_results(instance=ben,popul_size=12,nb_generations=50,Pc=0.9,Pm=0.06):
   best_sol=new_gen[ind[0][0]]
   end = time.time()
   result={
-      "C_max":Cmax(ben,best_sol),
+      "C_max":instance.makespan(best_sol),
       "order":best_sol.tolist(),
       "time":end-start
   }

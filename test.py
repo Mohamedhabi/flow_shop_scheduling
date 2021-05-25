@@ -1,6 +1,6 @@
 from numpy.core.numeric import _rollaxis_dispatcher
 from utils import Instance, Benchmark
-from fsp import ACO, specific_heuristic_NEH, branch_and_bound, meta_heuristic_ga
+from fsp import ACO, specific_heuristic_NEH,branch_and_bound, meta_heuristic_ga
 import numpy as np
 import json
 import re
