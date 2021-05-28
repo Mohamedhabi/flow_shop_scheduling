@@ -70,7 +70,7 @@ class Instance:
             'date_ticks':date_ticks
             }
 
-    def makespan(self, schedule):
+    def makespan(self, schedule, return_matrix = False):
         """Calculate completion times for each job in each machine.
 
         Arguments:
@@ -95,6 +95,7 @@ class Instance:
                 left = 0 if machine == 0 else cost_array[job_index][machine-1] 
                 cost_array[job_index][machine] = max(top,left) + cost
             job_index += 1
+        if return_matrix : return cost_array
         return cost_array[jobs_count-1][machine_count-1]
 
 class Benchmark:
