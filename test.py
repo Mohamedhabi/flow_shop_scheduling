@@ -4,7 +4,7 @@ from fsp import ACO, specific_heuristic_NEH,branch_and_bound, meta_heuristic_ga
 import numpy as np
 import json
 import re
-
+from fsp.branch_and_bound import evaluateSeqeunce
 OUTPUT_FOLDER = 'results'
 
 tai_benchmarks = [
@@ -77,5 +77,6 @@ def test_ga():
 #test_ga()
 benchmark = Benchmark(20,20, benchmark_folder = './benchmarks')
 instance = benchmark.get_instance(0)
-print([16, 0, 1, 18, 14, 12, 3, 8, 6, 4, 13, 2, 19, 15, 11, 17, 10, 7, 9, 5])
-print(instance.makespan([16, 0, 1, 18, 14, 12, 3, 8, 6, 4, 13, 2, 19, 15, 11, 17, 10, 7, 9, 5]))
+print([13, 2, 19, 8, 4, 11, 9, 10, 1, 5, 17, 14, 6, 12, 7, 15, 3, 16, 0, 18])
+print(instance.makespan([13, 2, 19, 8, 4, 11, 9, 10, 1, 5, 17, 14, 6, 12, 7, 15, 3, 16, 0, 18]))
+print(evaluateSeqeunce(instance,tuple([13, 2, 19, 8, 4, 11, 9, 10, 1, 5, 17, 14, 6, 12, 7, 15, 3, 16, 0, 18])))
