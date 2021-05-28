@@ -1,5 +1,5 @@
 import sys
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,redirect
 from flask_cors import CORS,cross_origin
 from fsp import branch_and_bound, parallel_bnb
 from utils import Instance, Benchmark,JsonBenchmark
@@ -34,9 +34,17 @@ def run_bnb(jobs_number,machines_number,instance_number):
     with open(get_result_file_name(jobs_number,machines_number,instance_number), 'w+') as f:
         json.dump(results , f)
     
-@app.route("/")
-def index():
-    return "SFP"
+@app.route('/')
+def server():
+    return redirect("http://localhost:3000", code=302)
+
+@app.route('/run',methods=["POST"])
+def run_method():
+    #TODO: implement run method
+    body = request.get_json(force=True)
+    print(body)
+    return jsonify(body)   
+
 
 #http://localhost:5000/lunchbnb?jobs=5&machines=4&instance=1
 @app.route("/lunchbnb")
@@ -95,6 +103,7 @@ def get_instance():
         })
     else:
         return jsonify({"error" : True,"message" : f"no existing benchmark for jobs={jobs_number} and machines={machines_number}"})
+
 @app.route("/instances/all",methods=["GET"])
 @cross_origin()
 def get_all_instances():
@@ -109,7 +118,8 @@ def get_all_instances():
                instancess.append({
                    "jobs" : k,
                    "machines" :k2,
-                   "id" : i
+                   "id" : i,
+                   "instance" : ben.get_instance(i).np_array.tolist()
                }) 
     return jsonify({
             "error" : False, 
