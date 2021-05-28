@@ -4,3 +4,4 @@ matplotlib
 itertools
 sortedcontainers
 flask
+flask_cors

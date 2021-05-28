@@ -1,5 +1,6 @@
 import sys
 from flask import Flask, request, jsonify
+from flask_cors import CORS,cross_origin
 from fsp import branch_and_bound, parallel_bnb
 from utils import Instance, Benchmark,JsonBenchmark
 import numpy as np
@@ -10,9 +11,9 @@ import os.path
 import os
 
 app = Flask(__name__)
-
+cors = CORS(app)
 OUTPUT_FOLDER = 'results'
-
+benchmark20_20 = Benchmark(20,20)
 def get_result_file_name(jobs_number,machines_number,instance_number):
     return OUTPUT_FOLDER+'/bnb/res_'+ '%d_%d_%d' % (jobs_number,machines_number,instance_number)+".json"
 
@@ -67,6 +68,54 @@ def all_results_bnb():
         if file.endswith(".json"):
             results.append(instance_file_to_numbers(file))
     return jsonify(results)
+
+instances = {
+    20 : {
+        20 : benchmark20_20
+    }
+}
+@app.route("/instances",methods=["GET"])
+@cross_origin()
+def get_instance():
+    print("hello")
+    jobs_number = int(request.args.get('jobs'))
+    machines_number = int(request.args.get('machines'))
+    instance_number = int(request.args.get('instance'))
+    try:
+        benchmark = instances[jobs_number][machines_number]
+    except :
+        benchmark = None
+    if(benchmark is not None):
+        instance = benchmark.get_instance(instance_number)
+        return jsonify({
+            "error" : False, 
+            "jobs" : jobs_number,
+            "machines" :machines_number,
+            "instance" :instance.np_array.tolist()
+        })
+    else:
+        return jsonify({"error" : True,"message" : f"no existing benchmark for jobs={jobs_number} and machines={machines_number}"})
+@app.route("/instances/all",methods=["GET"])
+@cross_origin()
+def get_all_instances():
+    instancess = []
+    count = None
+    for k,v in instances.items():
+        for k2,v2 in v.items():
+           print(v2)
+           ben = v2
+           count = ben.get_instances_number()
+           for i in range (count):
+               instancess.append({
+                   "jobs" : k,
+                   "machines" :k2,
+                   "id" : i
+               }) 
+    return jsonify({
+            "error" : False, 
+            "count" : count,
+            "instances" :instancess
+        })
 
 if __name__ == '__main__':
     app.debug = True
