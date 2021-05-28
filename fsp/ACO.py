@@ -193,7 +193,7 @@ class Colony:
             self.best_sequence = self.best_results['sequence']
     
     def round_update(self):
-        best_ant = max(self.ants, key=lambda x: x.makespan)
+        best_ant = min(self.ants, key=lambda x: x.makespan)
         self.update_pheromone(best_ant.makespan, best_ant.scheduledJobs)
 
         if best_ant.makespan < self.makespan or self.makespan == 0:
@@ -201,11 +201,10 @@ class Colony:
              self.best_sequence = best_ant.scheduledJobs
     
     def round_update_parallel(self):
-        #print('hey')
         best_ant = min(self.results, key=lambda x: x['makespan'])
         self.update_pheromone(best_ant['makespan'], best_ant['sequence'])
 
-        if best_ant['makespan'] < self.best_results['makespan']or self.best_results['makespan'] == 0:
+        if best_ant['makespan'] < self.best_results['makespan'] or self.best_results['makespan'] == 0:
             self.best_results['makespan'] = best_ant['makespan']
             self.best_results['sequence'] = best_ant['sequence']
     
