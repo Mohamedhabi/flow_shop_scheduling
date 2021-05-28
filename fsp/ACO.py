@@ -1,9 +1,9 @@
 import numpy as np
 import sys
 sys.path.append("../")
-from utils import Instance, Benchmark,JsonBenchmark
-import threading
 import time
+import multiprocessing
+import ctypes
 
 class Ant:
     def __init__(self, instance):
@@ -11,7 +11,7 @@ class Ant:
         self.instance = instance
         self.makespan = 0
 
-    def run(self, pheromone, heuristic_info, alpha, beta, q0, local_search, local_search_proba, local_search_nb_permutation):
+    def run(self, pheromone, heuristic_info, alpha, beta, q0, local_search, local_search_proba, local_search_nb_permutation, results_parallel = None):
         self.scheduledJobs = []
         j = -1
         nb_jobs = self.instance.get_jobs_number()
@@ -40,6 +40,11 @@ class Ant:
                     rand = np.random.uniform()
                     if rand < local_search_proba and position != job_position:
                         self.change_position(job_position, position)
+        
+        if results_parallel is not None:
+            results_parallel['makespan'] = self.makespan
+            results_parallel['sequence'] = self.scheduledJobs
+
         
     def change_position(self, from_position, to_position):
         machine_count = self.instance.get_machines_number()
@@ -112,87 +117,102 @@ class Colony:
         sumJobs = inverseInstance.sum(axis = 1)
         return sumJobs / sumJobs.sum()
     
-    def update_pheromone(self, best_ant):
+    def update_pheromone(self, makespan, scheduledJobs):
         i = 0
-        c_max = best_ant.makespan
+        c_max = makespan
         added_quantity = self.rho * self.Z / c_max
-        for j in best_ant.scheduledJobs:
+        for j in scheduledJobs:
             self.pheromoneMatrix[i,j] = (1 - self.rho) * self.pheromoneMatrix[i,j] + added_quantity
             i = j + 1
 
-    def lunch_ants(self, barrier, barrier_after_update, ants, nb_rounds, local_search , local_search_proba, local_search_nb_permutation):
+    def lunch_ants(self, pheromoneMatrix,results, barrier ,barrier_after_update,ants, nb_rounds, local_search , local_search_proba, local_search_nb_permutation):
         for _ in range(nb_rounds):
             for ant in ants:
-                ant.run(self.pheromoneMatrix, self.heuristic_info, self.alpha, self.beta, self.q0, local_search, local_search_proba, local_search_nb_permutation)
+                ant.run(pheromoneMatrix, self.heuristic_info, self.alpha, self.beta, self.q0, local_search, local_search_proba, local_search_nb_permutation, results)
             
-            id = barrier.wait()
-            if id == 0:
-                barrier.reset()
-            id = barrier_after_update.wait()
-            if id == 0:
-                barrier_after_update.reset()
+            barrier.wait()
+            barrier_after_update.wait()
     
-    def create_threads(self, threads, nb_rounds,local_search , local_search_proba, local_search_nb_permutation):
+    def exec_parallel(self, threads, nb_rounds,local_search , local_search_proba, local_search_nb_permutation):
         jobs = []
         ants_nubmer = len(self.ants)
         if threads < ants_nubmer:
-            barrier = threading.Barrier(threads, action=self.round_update)
-            barrier_after_update = threading.Barrier(threads)
             chunk_number = -(-threads // threads)
+        else:
+            chunk_number = 1
+            threads = ants_nubmer
+        with multiprocessing.Manager() as manager:
+            self.results = manager.list()
+            for thread in range(threads):
+                self.results.append(
+                    manager.dict(
+                        {
+                        "makespan": 0,
+                        "sequence": []
+                    })
+                )
+            pheromoneMatrix_shape = self.pheromoneMatrix.shape
+            shared_arr = multiprocessing.Array(ctypes.c_double, self.pheromoneMatrix.flatten())
+            self.pheromoneMatrix = np.frombuffer(shared_arr.get_obj()).reshape(pheromoneMatrix_shape[0],-1)
+            self.best_results = manager.dict({"makespan": 0, "sequence": []})
+            barrier = multiprocessing.Barrier(threads, action=self.round_update_parallel)
+            barrier_after_update = multiprocessing.Barrier(threads)
             for i in range(0, threads-1):
-                thread = threading.Thread(target=self.lunch_ants(
-                    barrier,
-                    barrier_after_update,
-                    self.ants[i * chunk_number:(i+1) * chunk_number],
-                    nb_rounds,
-                    local_search , 
-                    local_search_proba,
-                    local_search_nb_permutation))
+                thread = multiprocessing.Process(target=self.lunch_ants,
+                    args =  (
+                        self.pheromoneMatrix,
+                        self.results[i],
+                        barrier,
+                        barrier_after_update,
+                        self.ants[i * chunk_number:(i+1) * chunk_number],
+                        nb_rounds,
+                        local_search , 
+                        local_search_proba,
+                        local_search_nb_permutation))
                 jobs.append(thread)
             
             # The final thread
-            thread = threading.Thread(target=self.lunch_ants,
+            thread = multiprocessing.Process(target=self.lunch_ants,
                     args = (
-                    barrier,
-                    barrier_after_update,
-                    self.ants[threads-1 * chunk_number:ants_nubmer],
-                    nb_rounds,
-                    local_search, 
-                    local_search_proba,
-                    local_search_nb_permutation))
-            jobs.append(thread)
-        else:
-            barrier = threading.Barrier(ants_nubmer, action=self.round_update)
-            barrier_after_update = threading.Barrier(ants_nubmer)
-            for i in range(0, ants_nubmer):
-                thread = threading.Thread(target=self.lunch_ants,
-                    args =(
+                        self.pheromoneMatrix,
+                        self.results[threads - 1],
                         barrier,
                         barrier_after_update,
-                        self.ants[i:(i+1)],
+                        self.ants[threads-1 * chunk_number:ants_nubmer],
                         nb_rounds,
                         local_search, 
                         local_search_proba,
                         local_search_nb_permutation))
-                jobs.append(thread)
-        return jobs
+            jobs.append(thread)
+
+            for j in jobs:
+                j.start()
+            for j in jobs:
+                j.join()
+            self.makespan = self.best_results['makespan']
+            self.best_sequence = self.best_results['sequence']
     
     def round_update(self):
-        best_ant = min(self.ants, key=lambda x: x.makespan)
-        self.update_pheromone(best_ant)
+        best_ant = max(self.ants, key=lambda x: x.makespan)
+        self.update_pheromone(best_ant.makespan, best_ant.scheduledJobs)
 
         if best_ant.makespan < self.makespan or self.makespan == 0:
              self.makespan = best_ant.makespan
              self.best_sequence = best_ant.scheduledJobs
     
+    def round_update_parallel(self):
+        #print('hey')
+        best_ant = min(self.results, key=lambda x: x['makespan'])
+        self.update_pheromone(best_ant['makespan'], best_ant['sequence'])
+
+        if best_ant['makespan'] < self.best_results['makespan']or self.best_results['makespan'] == 0:
+            self.best_results['makespan'] = best_ant['makespan']
+            self.best_results['sequence'] = best_ant['sequence']
+    
     def run(self, nb_rounds = 10, parallel = False, threads = 8, local_search = False, local_search_proba = 0.02, local_search_nb_permutation = 3):
         start = time.perf_counter()
         if parallel:
-            jobs = self.create_threads(threads, nb_rounds, local_search , local_search_proba, local_search_nb_permutation)
-            for j in jobs:
-                j.start()
-            for j in jobs:
-                j.join()        
+            self.exec_parallel(threads, nb_rounds, local_search , local_search_proba, local_search_nb_permutation)       
         else:
             for _ in range(nb_rounds):
                 for ant in self.ants:
@@ -211,28 +231,3 @@ def get_results(
     
     colony = Colony(instance, initValue, nbAnts, rho, alpha, beta, q0, heuristic_info_strategy)
     return colony.run(nb_rounds, parallel, threads, local_search, local_search_proba, local_search_nb_permutation)
-
-# instance = Instance(
-#     np.array([
-#         [1,2,3,2],
-#         [1,4,2,10],
-#         [3,2,1,5],
-#         [4,10,3,1],
-#         [1,5,4,4],
-#         [2,3,2,6],
-#         [5,2,1,1],
-#         [2,3,2,6],
-#         [5,2,1,1],
-#     ], dtype=np.int64)
-# )
-# benchmark = Benchmark(200, 20, benchmark_folder = '../benchmarks')
-# instance = benchmark.get_instance(0)
-
-# cl = Colony(instance, nbAnts = 12)
-
-# print(cl.run(nb_rounds = 200, parallel = True, threads = 12, local_search = False, local_search_proba = 0.02))
-# cl = Colony(instance, nbAnts = 12)
-
-# print(cl.run(nb_rounds = 200, parallel = False, threads = 12, local_search = False, local_search_proba = 0.02))
-# print(instance.makespan([1, 0, 2, 4, 5, 7, 3, 8, 6]))
-# print(instance.makespan([0, 2, 1, 4, 5, 8, 3, 7, 6]))
