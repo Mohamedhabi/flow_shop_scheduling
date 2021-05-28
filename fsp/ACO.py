@@ -11,7 +11,7 @@ class Ant:
         self.instance = instance
         self.makespan = 0
 
-    def run(self, pheromone, heuristic_info, alpha, beta, q0, local_search = False, local_search_proba = 0.02):
+    def run(self, pheromone, heuristic_info, alpha, beta, q0, local_search, local_search_proba, local_search_nb_permutation):
         self.scheduledJobs = []
         j = -1
         nb_jobs = self.instance.get_jobs_number()
@@ -29,22 +29,51 @@ class Ant:
                 j = np.random.choice(list(range(nb_jobs)), 1, p = (unscheduledJobs_function / sum))[0]
             
             self.scheduledJobs.append(int(j))
-        self.makespan = self.instance.makespan(self.scheduledJobs)
+        self.makespanMatrix = self.instance.makespan(self.scheduledJobs, return_matrix = True)
+        self.makespan = self.makespanMatrix[-1][-1]    
 
         if local_search:
-            for job in range(nb_jobs):
-                rand = np.random.uniform()
-                if rand < local_search_proba:
-                    for position in range(nb_jobs):
-                        if self.scheduledJobs[position] != job:
-                            cp = self.scheduledJobs.copy()
-                            cp.remove(job)
-                            cp.insert(position, job)
-                            cp_makespan = self.instance.makespan(cp)
-                            if (cp_makespan < self.makespan):
-                                self.makespan = cp_makespan
-                                self.scheduledJobs = cp
+            for job_position in range(nb_jobs):
+                positions = np.random.choice(range(nb_jobs), local_search_nb_permutation)
+                
+                for position in positions:
+                    rand = np.random.uniform()
+                    if rand < local_search_proba and position != job_position:
+                        self.change_position(job_position, position)
+        
+    def change_position(self, from_position, to_position):
+        machine_count = self.instance.get_machines_number()
+        makespanMatrix = self.makespanMatrix.copy()
+        cp = self.scheduledJobs.copy()
+        job = self.scheduledJobs[from_position]
+        cp.remove(job)
+        cp.insert(to_position, job)
+        continu_from = min(from_position, to_position)
 
+        if continu_from == 0:
+            job = cp[continu_from]
+            makespanMatrix[continu_from][0] = self.instance.get_cost(job, 0)
+            for machine in range(1, machine_count):
+                cost = self.instance.get_cost(job, machine)
+                left = makespanMatrix[continu_from][machine-1] 
+                makespanMatrix[continu_from][machine] = left + cost
+            continu_from += 1
+
+        job_index = continu_from
+        for job in cp[continu_from:]:
+            top = makespanMatrix[job_index-1][0]
+            makespanMatrix[job_index][0] = top + self.instance.get_cost(job, 0)
+            for machine in range(1, machine_count):
+                cost = self.instance.get_cost(job,machine)
+                top = makespanMatrix[job_index-1][machine]
+                left = makespanMatrix[job_index][machine-1] 
+                makespanMatrix[job_index][machine] = max(top,left) + cost
+            job_index += 1
+
+        if makespanMatrix[-1][-1] < self.makespan:
+            self.makespan = makespanMatrix[-1][-1]
+            self.makespanMatrix = makespanMatrix
+            self.scheduledJobs = cp
 
 class Colony:
     def __init__(self, instance, initValue = 2, nbAnts = 5, rho = .5, alpha = 1, beta = 1, q0 = 0.97,heuristic_info_strategy = 'min'):
@@ -86,14 +115,15 @@ class Colony:
     def update_pheromone(self, best_ant):
         i = 0
         c_max = best_ant.makespan
+        added_quantity = self.rho * self.Z / c_max
         for j in best_ant.scheduledJobs:
-            self.pheromoneMatrix[i,j] = (1 - self.rho) * self.pheromoneMatrix[i,j] + self.rho * self.Z / c_max
+            self.pheromoneMatrix[i,j] = (1 - self.rho) * self.pheromoneMatrix[i,j] + added_quantity
             i = j + 1
 
-    def lunch_ants(self, barrier, barrier_after_update,start, end, nb_rounds, local_search , local_search_proba):
+    def lunch_ants(self, barrier, barrier_after_update, ants, nb_rounds, local_search , local_search_proba, local_search_nb_permutation):
         for _ in range(nb_rounds):
-            for ant in range(start,end):
-                self.ants[ant].run(self.pheromoneMatrix, self.heuristic_info, self.alpha, self.beta, self.q0, local_search, local_search_proba)
+            for ant in ants:
+                ant.run(self.pheromoneMatrix, self.heuristic_info, self.alpha, self.beta, self.q0, local_search, local_search_proba, local_search_nb_permutation)
             
             id = barrier.wait()
             if id == 0:
@@ -102,7 +132,7 @@ class Colony:
             if id == 0:
                 barrier_after_update.reset()
     
-    def create_threads(self, threads, nb_rounds,local_search , local_search_proba):
+    def create_threads(self, threads, nb_rounds,local_search , local_search_proba, local_search_nb_permutation):
         jobs = []
         ants_nubmer = len(self.ants)
         if threads < ants_nubmer:
@@ -113,22 +143,23 @@ class Colony:
                 thread = threading.Thread(target=self.lunch_ants(
                     barrier,
                     barrier_after_update,
-                    i * chunk_number, 
-                    (i+1) * chunk_number,
+                    self.ants[i * chunk_number:(i+1) * chunk_number],
                     nb_rounds,
                     local_search , 
-                    local_search_proba))
+                    local_search_proba,
+                    local_search_nb_permutation))
                 jobs.append(thread)
             
             # The final thread
-            thread = threading.Thread(target=self.lunch_ant,
+            thread = threading.Thread(target=self.lunch_ants,
                     args = (
                     barrier,
-                    threads-1 * chunk_number, 
-                    ants_nubmer,
+                    barrier_after_update,
+                    self.ants[threads-1 * chunk_number:ants_nubmer],
                     nb_rounds,
                     local_search, 
-                    local_search_proba))
+                    local_search_proba,
+                    local_search_nb_permutation))
             jobs.append(thread)
         else:
             barrier = threading.Barrier(ants_nubmer, action=self.round_update)
@@ -138,26 +169,26 @@ class Colony:
                     args =(
                         barrier,
                         barrier_after_update,
-                        i, 
-                        i+1,
+                        self.ants[i:(i+1)],
                         nb_rounds,
                         local_search, 
-                        local_search_proba))
+                        local_search_proba,
+                        local_search_nb_permutation))
                 jobs.append(thread)
         return jobs
     
     def round_update(self):
-        best_ant = max(self.ants, key=lambda x: x.makespan)
+        best_ant = min(self.ants, key=lambda x: x.makespan)
         self.update_pheromone(best_ant)
 
         if best_ant.makespan < self.makespan or self.makespan == 0:
              self.makespan = best_ant.makespan
              self.best_sequence = best_ant.scheduledJobs
     
-    def run(self, nb_rounds = 10, parallel = False, threads = 8, local_search = False, local_search_proba = 0.02):
+    def run(self, nb_rounds = 10, parallel = False, threads = 8, local_search = False, local_search_proba = 0.02, local_search_nb_permutation = 3):
         start = time.perf_counter()
         if parallel:
-            jobs = self.create_threads(threads, nb_rounds, local_search , local_search_proba)
+            jobs = self.create_threads(threads, nb_rounds, local_search , local_search_proba, local_search_nb_permutation)
             for j in jobs:
                 j.start()
             for j in jobs:
@@ -165,7 +196,7 @@ class Colony:
         else:
             for _ in range(nb_rounds):
                 for ant in self.ants:
-                    ant.run(self.pheromoneMatrix, self.heuristic_info, self.alpha, self.beta, self.q0, local_search, local_search_proba)
+                    ant.run(self.pheromoneMatrix, self.heuristic_info, self.alpha, self.beta, self.q0, local_search, local_search_proba, local_search_nb_permutation)
                 self.round_update()
 
         return {
@@ -176,10 +207,10 @@ class Colony:
 
 def get_results(
     instance, initValue = 10**(-6), nbAnts = 5, rho = 0.01, alpha = 1, beta = 0.0001, q0 = 0.97, heuristic_info_strategy = 'min', 
-    nb_rounds = 2500, parallel = False, threads = 12, local_search = True, local_search_proba = 0.02):
+    nb_rounds = 2500, parallel = False, threads = 12, local_search = True, local_search_proba = 0.02, local_search_nb_permutation = 3):
     
     colony = Colony(instance, initValue, nbAnts, rho, alpha, beta, q0, heuristic_info_strategy)
-    return colony.run(nb_rounds, parallel, threads, local_search, local_search_proba)
+    return colony.run(nb_rounds, parallel, threads, local_search, local_search_proba, local_search_nb_permutation)
 
 # instance = Instance(
 #     np.array([
