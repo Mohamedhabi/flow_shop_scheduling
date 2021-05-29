@@ -3,6 +3,8 @@ from datetime import datetime
 import json
 import re
 
+from sympy import Id
+
 def convert_to_datetime(x):
       return datetime.fromtimestamp(31536000+x*24*3600).strftime("%Y-%m-%d")
 
@@ -22,7 +24,8 @@ class Instance:
     """
     Instance of the problem
     """
-    def __init__(self, instance_2d_array, upper_bound = None, lower_bound = None):
+    def __init__(self, instance_2d_array,id=None, upper_bound = None, lower_bound = None):
+        self.id = id
         self.np_array = instance_2d_array
         self.upper_bound = upper_bound
         self.lower_bound = lower_bound
@@ -97,6 +100,8 @@ class Instance:
             job_index += 1
         return cost_array[jobs_count-1][machine_count-1]
 
+def gen_instance_id(jobs: int,machine: int,index: int):
+    return str(jobs)+"x"+str(machine)+"-"+str(index)
 class Benchmark:
     """
     A class representing a benchmark
@@ -108,8 +113,8 @@ class Benchmark:
         self.instances = []
         self.number_of_instances = 0
         with open(benchmark_folder+"/tai"+str(nb_jobs)+'_'+str(nb_machines)+".txt") as file:
-            for i, group in enumerate(get_groups(file, "number of jobs")):
-                self.number_of_instances = i+1
+            for j, group in enumerate(get_groups(file, "number of jobs")):
+                self.number_of_instances = j+1
                 group[1] = re.sub(' +', ' ', group[1])[1:-1]
                 infos = group[1].split(' ')
                 instance_matrix = []
@@ -121,7 +126,7 @@ class Benchmark:
                     instance_matrix.append(machine)
 
                 self.instances.append(Instance(
-                    instance_2d_array = np.array(instance_matrix,dtype= np.int64).transpose(), 
+                    instance_2d_array = np.array(instance_matrix,dtype= np.int64).transpose(),id=gen_instance_id(nb_jobs,nb_machines,j),
                     upper_bound = int(infos[-2]), 
                     lower_bound = int(infos[-1])))
 

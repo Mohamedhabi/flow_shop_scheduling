@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify,redirect
 from flask_cors import CORS,cross_origin
 from fsp import branch_and_bound, parallel_bnb
 from utils import Instance, Benchmark,JsonBenchmark
+from core.executor import execute
 import numpy as np
 from multiprocessing import Process, Value
 from time import sleep
@@ -42,8 +43,14 @@ def server():
 def run_method():
     #TODO: implement run method
     body = request.get_json(force=True)
-    print(body)
-    return jsonify(body)   
+    res,err = execute(
+        body["method_id"],
+        benchmark20_20.get_instance(body["instance_id"]),
+        body["params"]
+    )
+    if err is not None:
+        jsonify({"error" : True,"message" : err["message"]})
+    return jsonify(res)   
 
 
 #http://localhost:5000/lunchbnb?jobs=5&machines=4&instance=1
@@ -99,6 +106,7 @@ def get_instance():
             "error" : False, 
             "jobs" : jobs_number,
             "machines" :machines_number,
+            "id" : instance.id,
             "instance" :instance.np_array.tolist()
         })
     else:
@@ -115,11 +123,12 @@ def get_all_instances():
            ben = v2
            count = ben.get_instances_number()
            for i in range (count):
+               instance = ben.get_instance(i)
                instancess.append({
                    "jobs" : k,
                    "machines" :k2,
-                   "id" : i,
-                   "instance" : ben.get_instance(i).np_array.tolist()
+                   "id" : instance.id,
+                   "instance" : instance.np_array.tolist()
                }) 
     return jsonify({
             "error" : False, 
