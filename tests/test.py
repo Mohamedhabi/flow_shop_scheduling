@@ -1,6 +1,5 @@
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from numpy.core.numeric import _rollaxis_dispatcher
 from utils import Instance, Benchmark
 from fsp import ACO, specific_heuristic_NEH,branch_and_bound, meta_heuristic_ga
 import numpy as np
@@ -11,12 +10,21 @@ import re
 OUTPUT_FOLDER = 'results'
 
 tai_benchmarks = [
+    (5,5),
+    (20,5),
+    (20,10),
     (20,20),
-
+    (50,5),
+    (50,10),
+    (50,20),
+    (100,5),
+    (100,10),
+    (100,20),
+    (500,20),
     ]
 
-def get_result_file_name(method,jobs_number,machines_number):
-    return OUTPUT_FOLDER+'/'+method+'/res_'+ '%d_%d' % (jobs_number,machines_number)+".json"
+def get_result_file_name(method, jobs_number, machines_number, instance):
+    return OUTPUT_FOLDER+'/'+method+'/b_'+ '%d_%d' % (jobs_number,machines_number)+'/res_'+'%d' % (instance)+".json"
 
 def get_normalize_json(results):
     for result in results:
@@ -26,61 +34,51 @@ def get_normalize_json(results):
     tmp = re.sub(r'\]"', ']', text_json)
     return  re.sub(r'"\[', '[', tmp)
 
-def test_ACO():
+def transfor_params_json(params):
+    result =[]
+    for b in tai_benchmarks:
+        result.append({
+            "jobs": b[0],
+            "machines": b[1],
+            "params": []
+        })
+
+    for param in params:
+        for b in param['benchmarks']:
+            for bench in result:
+                if bench["jobs"] == b[0] and bench["machines"] == b[1]:
+                    element = bench
+                    break
+            element["params"].append(param)
+        param.pop('benchmarks', None)
+    return result
+
+def run_test(module):
     with open('tests/params/aco.json') as f:
-        data = json.load(f)
-        print(type(data[0]))
-    for params in data:
-        for b in tai_benchmarks:
-            benchmark = Benchmark(b[0], b[1], benchmark_folder = './benchmarks')
-            instances_number = benchmark.get_instances_number()
-            results = {
-                'params': params,
-                'results': []
-            }
-            for nb in range(1):
-                instance = benchmark.get_instance(nb)
-                results['results'].append({
-                    'instance': nb,
-                    'results': ACO.get_results(instance, **params)
-                })
+        params = json.load(f)
 
-        with open(get_result_file_name('aco', b[0], b[1]), 'w+') as f:
-            json.dump(results , f, indent = 2)
-
-def test_NEH():
-    for b in tai_benchmarks:
-        benchmark = Benchmark(b[0], b[1], benchmark_folder = './benchmarks')
+    benchmark_paeams = transfor_params_json(params)
+    
+    for b in benchmark_paeams:
+        benchmark = Benchmark(b['jobs'], b['machines'], benchmark_folder = './benchmarks')
         instances_number = benchmark.get_instances_number()
-        results = []
-        for nb in range(1):
-            instance = benchmark.get_instance(nb)
-            results.append({
-                'instance': nb,
-                'results': specific_heuristic_NEH.get_results(instance)
-            })
-        with open(get_result_file_name('neh', b[0], b[1]), 'w+') as f:
-            json.dump(results , f, indent = 2)
-
-def test_ga():
-    for b in tai_benchmarks:
-        benchmark = Benchmark(b[0], b[1], benchmark_folder = './benchmarks')
-        instances_number = benchmark.get_instances_number()
-        results = []
         for nb in range(instances_number):
+            results = []
             instance = benchmark.get_instance(nb)
-            results.append({
-                'instance': nb,
-                'results': meta_heuristic_ga.get_results(instance)
-            })
+            for param in b["params"]:
+                param_results = {
+                    'params': param,
+                    'results': []
+                }
+                results.append(param_results)                    
+                param_results['results'].append({
+                    'instance': nb,
+                    'results': module.get_results(instance, **param)
+                })
+                print('done', b['jobs'], b['machines'], nb)
 
-        with open(get_result_file_name('ga', b[0], b[1]), 'w+') as f:
-            f.write(get_normalize_json(results))
+            with open(get_result_file_name('aco', b['jobs'], b['machines'], nb), 'w+') as f:
+                json.dump(results , f, indent = 2)
 
 if __name__ == '__main__':
-#test_ga()
-    test_ACO()
-    benchmark = Benchmark(20,20, benchmark_folder = './benchmarks')
-    instance = benchmark.get_instance(0)
-    print([16, 0, 1, 18, 14, 12, 3, 8, 6, 4, 13, 2, 19, 15, 11, 17, 10, 7, 9, 5])
-    print(instance.makespan([16, 0, 1, 18, 14, 12, 3, 8, 6, 4, 13, 2, 19, 15, 11, 17, 10, 7, 9, 5]))
+    run_test(ACO)
