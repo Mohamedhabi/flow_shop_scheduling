@@ -8,6 +8,7 @@ from sympy import Id
 def convert_to_datetime(x):
       return datetime.fromtimestamp(31536000+x*24*3600).strftime("%Y-%m-%d")
 
+
 def get_groups(seq, group_by):
     data = []
     for line in seq:
@@ -48,7 +49,14 @@ class Instance:
 
     def get_array(self):
         return self.np_array
-
+    def create_instance_from_json(json: dict):
+        id = json["id"]
+        jobs = json["jobs"]
+        machines = json["machines"]
+        costs = json["costs"]
+        return Instance(
+            np.asarray(costs), id
+        )
     def get_chart_data(self, results):
         # result: {'C_max': 13, 'order': [0, 1, 2]}
         machine_free = np.zeros(self.get_machines_number())
@@ -138,6 +146,7 @@ class Benchmark:
     def get_instance(self, number):
         if number < self.number_of_instances:
             return self.instances[number]
+            
 
 class JsonBenchmark():
     def __init__(self, nb_jobs, nb_machines, benchmark_folder = './benchmarks'):

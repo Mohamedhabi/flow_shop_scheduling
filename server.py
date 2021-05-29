@@ -26,14 +26,14 @@ def instance_file_to_numbers(file):
         'instance_number': int(file_split[3][0])
     } 
 
-def run_bnb(jobs_number,machines_number,instance_number):
-    jsonbenchmark = JsonBenchmark(jobs_number,machines_number,benchmark_folder="./benchmarks")
-    instance = jsonbenchmark.get_instance_by_index(instance_number)["instance"]
-    instance = Instance(np.asarray(instance))
-    results = branch_and_bound.get_results(instance,search_strategy=branch_and_bound.DEPTH_FIRST_SEARCH)
-    print(results)
-    with open(get_result_file_name(jobs_number,machines_number,instance_number), 'w+') as f:
-        json.dump(results , f)
+# def run_bnb(jobs_number,machines_number,instance_number):
+#     jsonbenchmark = JsonBenchmark(jobs_number,machines_number,benchmark_folder="./benchmarks")
+#     instance = jsonbenchmark.get_instance_by_index(instance_number)["instance"]
+#     instance = Instance(np.asarray(instance))
+#     results = branch_and_bound.get_results(instance,search_strategy=branch_and_bound.DEPTH_FIRST_SEARCH)
+#     print(results)
+#     with open(get_result_file_name(jobs_number,machines_number,instance_number), 'w+') as f:
+#         json.dump(results , f)
     
 @app.route('/')
 def server():
@@ -42,11 +42,22 @@ def server():
 @app.route('/run',methods=["POST"])
 def run_method():
     #TODO: implement run method
+    print("run..")
     body = request.get_json(force=True)
+    print(body)
+    instance_id = body.get("instance_id",None)
+    print(instance_id)
+    if instance_id is not None:
+        instance = benchmark20_20.get_instance(instance_id)
+    else:
+        instanceJson = body.get("instance",None)
+        if instanceJson is None :
+            return jsonify({"error" : True,"message" : "instance id or instance must be provided"}),404
+        instance = Instance.create_instance_from_json(instanceJson)
     res,err = execute(
-        body["method_id"],
-        benchmark20_20.get_instance(body["instance_id"]),
-        body["params"]
+        body.get("method_id",None),
+        instance,
+        body.get("params",None)
     )
     if err is not None:
         jsonify({"error" : True,"message" : err["message"]})
@@ -54,35 +65,35 @@ def run_method():
 
 
 #http://localhost:5000/lunchbnb?jobs=5&machines=4&instance=1
-@app.route("/lunchbnb")
-def bnb():
-    jobs_number = int(request.args.get('jobs'))
-    machines_number = int(request.args.get('machines'))
-    instance_number = int(request.args.get('instance'))
-    p = Process(target=run_bnb,  args=(jobs_number,machines_number,instance_number))
-    p.start()
-    return 'Done'
+# @app.route("/lunchbnb")
+# def bnb():
+#     jobs_number = int(request.args.get('jobs'))
+#     machines_number = int(request.args.get('machines'))
+#     instance_number = int(request.args.get('instance'))
+#     p = Process(target=run_bnb,  args=(jobs_number,machines_number,instance_number))
+#     p.start()
+#     return 'Done'
     
 #http://localhost:5000/bnb?jobs=5&machines=4&instance=1
-@app.route("/bnb")
-def results_bnb():
-    jobs_number = int(request.args.get('jobs'))
-    machines_number = int(request.args.get('machines'))
-    instance_number = int(request.args.get('instance'))
-    file_name = get_result_file_name(jobs_number,machines_number,instance_number)
-    if os.path.isfile(file_name):
-        with open(file_name) as file:
-            return json.load(file) 
-    else:
-        return 'no results for this instance'
+# @app.route("/bnb")
+# def results_bnb():
+#     jobs_number = int(request.args.get('jobs'))
+#     machines_number = int(request.args.get('machines'))
+#     instance_number = int(request.args.get('instance'))
+#     file_name = get_result_file_name(jobs_number,machines_number,instance_number)
+#     if os.path.isfile(file_name):
+#         with open(file_name) as file:
+#             return json.load(file) 
+#     else:
+#         return 'no results for this instance'
 
-@app.route("/bnballresults")
-def all_results_bnb():
-    results = []
-    for file in os.listdir(OUTPUT_FOLDER+'/bnb'):
-        if file.endswith(".json"):
-            results.append(instance_file_to_numbers(file))
-    return jsonify(results)
+# @app.route("/bnballresults")
+# def all_results_bnb():
+#     results = []
+#     for file in os.listdir(OUTPUT_FOLDER+'/bnb'):
+#         if file.endswith(".json"):
+#             results.append(instance_file_to_numbers(file))
+#     return jsonify(results)
 
 instances = {
     20 : {
