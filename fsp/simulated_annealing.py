@@ -102,7 +102,7 @@ def makespan (jobOrder : list, jobMatrix : Instance) :
             tab[i, j*2+1] = tab[i, 2*j] + int(jobMatrix.np_array[jobOrder[i], j])
     return int(tab[-1,-1])
 
-def get_results (instance : Instance, initial_value, Ti=2000, Tf = 0.1 ,nb_repetitions=100, alpha = 0.93):
+def get_results (instance : Instance, initial_value = 'CDS', Ti=2000, Tf = 0.1 ,nb_repetitions=100, alpha = 0.93):
     start = time.perf_counter()
     result = simulated_annealing(instance,initial_value, Ti, Tf,nb_repetitions,alpha)
     end = time.perf_counter()

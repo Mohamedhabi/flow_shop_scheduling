@@ -5,6 +5,7 @@ import fsp.branch_and_bound as bnb
 from fsp.branch_and_bound import *
 import numpy as np
 from time import perf_counter
+from fsp import specific_heuristic_NEH, ACO, CDS, simulated_annealing, meta_heuristic_ga
 
 
 def execute_bnb(instance : Instance, params : dict):
@@ -53,33 +54,31 @@ def execute_bnb(instance : Instance, params : dict):
         "additional_info": addinfo
     }
     return res, None
-    
-def execute(method_id: int, instance: Instance, params: dict):
-    rn = []
-    exectime = -1
-    makespan = -1
-    addinfo = {}
-    method=""
-    if(method_id == BRANCH_AND_BOUND["id"]):
-       return execute_bnb(instance,params)
-    if(method_id == NEH["id"]):
-        print(f"executing {NEH['method']}")
-    if(method_id == CDS["id"]):
-        print(f"executing {CDS['method']}")
-    if(method_id == ACO["id"]):
-        print(f"executing {ACO['method']}")
-    if(method_id == SA["id"]):
-        print(f"executing {SA['method']}")
-    if(method_id == GA["id"]):
-        print(f"executing {GA['method']}")
 
-    print(rn)
-    res = {
+def execute_others(instance : Instance, params, module, method):
+    res = module.get_results(instance, **params)
+    result =  {
         "instance_id": instance.id,
         "method": method,
-        "makespan": int(makespan),
-        "execution_time": exectime,
-        "sequence": rn,
-        "additional_info": addinfo
+        "makespan": int(res['C_max']),
+        "execution_time": float(res['time']),
+        "sequence": res['order'],
+        "additional_info": params
     }
-    return res, None
+    print(result)
+    return result, None
+
+    
+def execute(method_id: int, instance: Instance, params):
+    if(method_id == BRANCH_AND_BOUND["id"]):
+       return execute_bnb(instance,params)
+    if(method_id == METHOD_NEH["id"]):
+        return execute_others(instance, params, specific_heuristic_NEH, METHOD_NEH['method'])
+    if(method_id == METHOD_ACO["id"]):
+        return execute_others(instance, params, ACO, METHOD_ACO['method'])
+    if(method_id == METHOD_CDS["id"]):
+        return execute_others(instance, params, CDS, METHOD_CDS['method'])
+    if(method_id == METHOD_SA["id"]):
+        return execute_others(instance, params, simulated_annealing, METHOD_SA['method'])
+    if(method_id == METHOD_GA["id"]):
+        return execute_others(instance, params, meta_heuristic_ga, METHOD_GA['method'])

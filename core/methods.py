@@ -2,23 +2,23 @@ BRANCH_AND_BOUND = {
     "id" : 0,
     "method" : "branch and bound"
 }
-NEH = {
+METHOD_NEH = {
     "id" : 1,
     "method" : "NEH"
 }
-CDS = {
+METHOD_CDS = {
     "id" : 2,
     "method" : "CDS"
 }
-ACO = {
+METHOD_ACO = {
     "id" : 3,
     "method" : "Ant colony optimization"
 }
-SA = {
+METHOD_SA = {
     "id" : 4,
     "method" : "Simulated Annealing"
 }
-GA = {
+METHOD_GA = {
     "id" : 5,
     "method" :"Genetic Algorithm"
     }
