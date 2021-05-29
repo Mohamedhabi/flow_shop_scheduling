@@ -10,7 +10,7 @@ from utils import Instance
 #nb_machines = len(matrice[0])
 
 
-def simulated_annealing(instance : Instance, intial_value , Ti = 900,Tf = 0.1 ,alpha = 0.93):
+def simulated_annealing(instance : Instance, intial_value , Ti = 2000,Tf = 0.1 ,nb_repetitions=100, alpha = 0.93):
     #Number of jobs given
     nb_machines = instance.get_machines_number()
     job_count = instance.get_jobs_number()
@@ -38,22 +38,23 @@ def simulated_annealing(instance : Instance, intial_value , Ti = 900,Tf = 0.1 ,a
     # of iterations
     temp_cycle = 0
     while (T >= Tf)  :
-        new_seq = old_seq.copy()
-        job = new_seq.pop(randint(0,n-1))
-        new_seq.insert(randint(0,n-1),job)        
-        new_make_span = makespan(new_seq, instance)
-        delta_mk1 = new_make_span - old_makeSpan
-        if delta_mk1 <= 0:
-            old_seq = new_seq
-            old_makeSpan = new_make_span
-        else :
-            Aprob = np.exp(-(delta_mk1/T))
-            if Aprob > np.random.uniform(0.5,0.9):
+        for i in range(0,nb_repetitions-1) : 
+            new_seq = old_seq.copy()
+            job = new_seq.pop(randint(0,n-1))
+            new_seq.insert(randint(0,n-1),job)        
+            new_make_span = makespan(new_seq, instance)
+            delta_mk1 = new_make_span - old_makeSpan
+            if delta_mk1 <= 0:
                 old_seq = new_seq
                 old_makeSpan = new_make_span
             else :
-                #The solution is discarded (on élague)
-                pass
+                Aprob = np.exp(-(delta_mk1/T))
+                if Aprob > np.random.uniform(0.5,0.9):
+                    old_seq = new_seq
+                    old_makeSpan = new_make_span
+                else :
+                    #The solution is discarded (on élague)
+                    pass
         T = T * alpha 
         temp_cycle += 1
 
@@ -101,9 +102,9 @@ def makespan (jobOrder : list, jobMatrix : Instance) :
             tab[i, j*2+1] = tab[i, 2*j] + int(jobMatrix.np_array[jobOrder[i], j])
     return int(tab[-1,-1])
 
-def get_results (instance : Instance, initial_value):
+def get_results (instance : Instance, initial_value, Ti=2000, Tf = 0.1 ,nb_repetitions=100, alpha = 0.93):
     start = time.perf_counter()
-    result = simulated_annealing(instance,initial_value)
+    result = simulated_annealing(instance,initial_value, Ti, Tf,nb_repetitions,alpha)
     end = time.perf_counter()
     return {
         "order" : result['order'],
