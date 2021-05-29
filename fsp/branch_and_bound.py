@@ -178,6 +178,9 @@ def general_case_branch_and_bound(instance :Instance,search_strategy=BEST_FIRST_
     # }
     if mesure :
         start = time.perf_counter()
+    bestNode = Node(starting_seq,[],machine_count)
+    bestNode.eval = upper_bound
+    cost = upper_bound
     bestNode,cost = BandB(instance,level,starting_node,upper_bound,count_array,search_strategy,log)
     if mesure :
         end = time.perf_counter()
@@ -189,6 +192,7 @@ def general_case_branch_and_bound(instance :Instance,search_strategy=BEST_FIRST_
         
         print("Leafs reached : " + str(count_array[2]))
         print(f"Time took {end - start} seconds")
+    
     return {
         "C_max" :  cost,
         "order" : bestNode.scheduled_jobs,
