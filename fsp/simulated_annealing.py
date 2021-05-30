@@ -1,8 +1,8 @@
 from random import randint
 import time
 import numpy as np
-from .specific_heuristic_NEH import NEH
-from .CDS import cds as CDS
+from . import CDS, specific_heuristic_NEH
+
 from utils import Instance
 
 #population_size = 100
@@ -14,19 +14,19 @@ def simulated_annealing(instance : Instance, intial_value , Ti = 2000,Tf = 0.1 ,
     #Number of jobs given
     nb_machines = instance.get_machines_number()
     job_count = instance.get_jobs_number()
-    n = job_count;
+    n = job_count
 
 
     #Initialize the primary seq
     if(intial_value=='NEH') :
         print('NEH')
-        neh = NEH(instance)
+        neh = specific_heuristic_NEH.get_results(instance)
         old_seq = neh['sequence']
         old_makeSpan = neh['makespan']  
         
     elif(intial_value=='CDS') :
         print('CDS')
-        cds = CDS(instance)
+        cds = CDS.get_results(instance)
         old_seq = cds['order']
         old_makeSpan = cds['C_max']  
     new_seq =[]  
@@ -102,12 +102,12 @@ def makespan (jobOrder : list, jobMatrix : Instance) :
             tab[i, j*2+1] = tab[i, 2*j] + int(jobMatrix.np_array[jobOrder[i], j])
     return int(tab[-1,-1])
 
-def get_results (instance : Instance, initial_value = 'CDS', Ti=2000, Tf = 0.1 ,nb_repetitions=100, alpha = 0.93):
+def get_results (instance : Instance, initial_value = 'CDS', Ti=200, Tf = 0.1 ,nb_repetitions=10, alpha = 0.93):
     start = time.perf_counter()
     result = simulated_annealing(instance,initial_value, Ti, Tf,nb_repetitions,alpha)
     end = time.perf_counter()
     return {
+        'C_max' : int(result['C_max']),
         "order" : result['order'],
-        'C_max' : result['C_max'],
         'time' : end-start
     }

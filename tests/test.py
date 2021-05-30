@@ -1,7 +1,7 @@
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import Instance, Benchmark
-from fsp import ACO, specific_heuristic_NEH,branch_and_bound, meta_heuristic_ga
+from fsp import ACO, specific_heuristic_NEH,branch_and_bound, meta_heuristic_ga, simulated_annealing, CDS
 import numpy as np
 import json
 import re
@@ -39,7 +39,7 @@ def transfor_params_json(params, tai_benchmarks):
         param.pop('benchmarks', None)
     return result
 
-def run_test(module, folder_name, params_path, benchmarks_path, tai_benchmarks):
+def run_test(module, folder_name, params_path, benchmarks_path, tai_benchmarks, nb_instances_per_benchmark = None):
     with open(params_path) as f:
         params = json.load(f)
 
@@ -47,10 +47,15 @@ def run_test(module, folder_name, params_path, benchmarks_path, tai_benchmarks):
     
     for b in benchmark_paeams:
         benchmark = Benchmark(b['jobs'], b['machines'], benchmark_folder = benchmarks_path)
-        instances_number = benchmark.get_instances_number()
+        if nb_instances_per_benchmark is None:
+            instances_number = benchmark.get_instances_number()
+        else: 
+            instances_number = nb_instances_per_benchmark
         for nb in range(instances_number):
             results = []
             instance = benchmark.get_instance(nb)
+            if instance is None:
+                break
             i = 0
             for param in b["params"]:
                 param_results = {
@@ -71,10 +76,20 @@ def run_test(module, folder_name, params_path, benchmarks_path, tai_benchmarks):
 if __name__ == '__main__':
     #Benchmarks to execute
     tai_benchmarks = [
-        (5,5),
-        (100,5),
-        (100,10),
-        (100,20),
-        (500,20),
+        # [5,5],
+        # [20,5],
+        # [20,10],
+        # [20,20],
+        [50,5],
+        [50,10],
+        [50,20],
+        [100,5],
+        [100,10],
+        [100,20],
+        [500,20]
     ]
-    run_test(ACO, 'aco', 'tests/params/aco.json', './benchmarks', tai_benchmarks)
+    #run_test(ACO, 'aco', 'tests/params/aco.json', './benchmarks', tai_benchmarks, None)
+    #run_test(simulated_annealing, 'sa', 'tests/params/sa.json', './benchmarks', tai_benchmarks, 2)
+    #run_test(CDS, 'cds', 'tests/params/none.json', './benchmarks', tai_benchmarks)
+    #run_test(specific_heuristic_NEH, 'neh', 'tests/params/none.json', './benchmarks', tai_benchmarks)
+    run_test(meta_heuristic_ga, 'ga', 'tests/params/ga.json', './benchmarks', tai_benchmarks, 2)
