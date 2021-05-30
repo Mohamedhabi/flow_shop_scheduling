@@ -9,20 +9,6 @@ import re
 
 OUTPUT_FOLDER = 'results'
 
-tai_benchmarks = [
-    (5,5),
-    (20,5),
-    (20,10),
-    (20,20),
-    (50,5),
-    (50,10),
-    (50,20),
-    (100,5),
-    (100,10),
-    (100,20),
-    (500,20),
-    ]
-
 def get_result_file_name(method, jobs_number, machines_number, instance):
     return OUTPUT_FOLDER+'/'+method+'/b_'+ '%d_%d' % (jobs_number,machines_number)+'/res_'+'%d' % (instance)+".json"
 
@@ -34,7 +20,7 @@ def get_normalize_json(results):
     tmp = re.sub(r'\]"', ']', text_json)
     return  re.sub(r'"\[', '[', tmp)
 
-def transfor_params_json(params):
+def transfor_params_json(params, tai_benchmarks):
     result =[]
     for b in tai_benchmarks:
         result.append({
@@ -47,24 +33,25 @@ def transfor_params_json(params):
         for b in param['benchmarks']:
             for bench in result:
                 if bench["jobs"] == b[0] and bench["machines"] == b[1]:
-                    element = bench
+                    bench["params"].append(param)
                     break
-            element["params"].append(param)
+
         param.pop('benchmarks', None)
     return result
 
-def run_test(module):
-    with open('tests/params/aco.json') as f:
+def run_test(module, folder_name, params_path, benchmarks_path, tai_benchmarks):
+    with open(params_path) as f:
         params = json.load(f)
 
-    benchmark_paeams = transfor_params_json(params)
+    benchmark_paeams = transfor_params_json(params, tai_benchmarks)
     
     for b in benchmark_paeams:
-        benchmark = Benchmark(b['jobs'], b['machines'], benchmark_folder = './benchmarks')
+        benchmark = Benchmark(b['jobs'], b['machines'], benchmark_folder = benchmarks_path)
         instances_number = benchmark.get_instances_number()
         for nb in range(instances_number):
             results = []
             instance = benchmark.get_instance(nb)
+            i = 0
             for param in b["params"]:
                 param_results = {
                     'params': param,
@@ -75,10 +62,19 @@ def run_test(module):
                     'instance': nb,
                     'results': module.get_results(instance, **param)
                 })
-                print('done', b['jobs'], b['machines'], nb)
+                print('done', b['jobs'], b['machines'], nb, i)
+                i += 1
 
-            with open(get_result_file_name('aco', b['jobs'], b['machines'], nb), 'w+') as f:
+            with open(get_result_file_name(folder_name, b['jobs'], b['machines'], nb), 'w+') as f:
                 json.dump(results , f, indent = 2)
 
 if __name__ == '__main__':
-    run_test(ACO)
+    #Benchmarks to execute
+    tai_benchmarks = [
+        (5,5),
+        (100,5),
+        (100,10),
+        (100,20),
+        (500,20),
+    ]
+    run_test(ACO, 'aco', 'tests/params/aco.json', './benchmarks', tai_benchmarks)
