@@ -125,7 +125,7 @@ def run_method():
 @cross_origin()
 def get_instance():
     instance_id = request.args.get('instance_id')
-    instance = instances[instance_id]
+    instance = instances.get(instance_id, None)
     if(instance is not None):
         return jsonify({
             "error" : False, 
@@ -140,20 +140,18 @@ def get_instance():
 @app.route("/instances/all",methods=["GET"])
 @cross_origin()
 def get_all_instances():
-    result = []
+    instancess = []
     for k,v in instances.items():
-        result.append({
+        instancess.append({
             "jobs" : v.get_jobs_number(),
             "machines" :v.get_machines_number(),
             "id" : v.id,
             "instance" :v.np_array.tolist()
         })
-
-    print("\n\n\n\n\n\n",'hey')
     return jsonify({
             "error" : False, 
-            "count" : len(result),
-            "instances" :result
+            "count" : len(instancess),
+            "instances" :instancess
         })
 
 if __name__ == '__main__':
