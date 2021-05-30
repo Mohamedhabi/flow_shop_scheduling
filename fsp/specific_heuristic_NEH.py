@@ -335,7 +335,7 @@ def get_results(instance,tie_breaking=False,jobs_order="SD"):
     Returns:
         list: jobs order
     """
-    return NEH(instance)
+    return NEH(instance, tie_breaking, jobs_order)
 # bn =Benchmark(20,20,"../benchmarks")
 # ins = bn.get_instance(0)
 # print(get_results(ins))
