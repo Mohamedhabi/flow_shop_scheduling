@@ -26,6 +26,30 @@ def instance_file_to_numbers(file):
         'instance_number': int(file_split[3][0])
     } 
 
+def benchmark_file_to_numbers(file):
+    #file exemple tai5_5.txt we want to extract (5, 5)
+    file = file[3:-4]
+    file_split = file.split('_')
+    return {
+        'jobs_number': int(file_split[0]),
+        'machines_number': int(file_split[1]),
+    } 
+
+def read_all_instances(BENCHMARKS_FOLDER):
+    results = {}
+    instance_id = ''
+    for file in os.listdir(BENCHMARKS_FOLDER):
+        if file.endswith(".txt"):
+            result = benchmark_file_to_numbers(file)
+            benchmark = Benchmark(result['jobs_number'], result['machines_number'], BENCHMARKS_FOLDER)
+            instances_number = benchmark.get_instances_number()
+            for i in range(instances_number):
+                results[gen_instance_id(result['jobs_number'], result['machines_number'], i)] = benchmark.get_instance(i)
+    return results
+
+#key:id instance -> value: Instance object
+instances = read_all_instances('./benchmarks')
+
 # def run_bnb(jobs_number,machines_number,instance_number):
 #     jsonbenchmark = JsonBenchmark(jobs_number,machines_number,benchmark_folder="./benchmarks")
 #     instance = jsonbenchmark.get_instance_by_index(instance_number)["instance"]
@@ -48,7 +72,7 @@ def run_method():
     instance_id = body.get("instance_id",None)
     print(instance_id)
     if instance_id is not None:
-        instance = instances.get(instance_id,None)
+        instance = instances[instance_id]
         if instance is None:
             return jsonify({"error" : True,"message" : "Instance not found"}),404
     else:
@@ -97,44 +121,17 @@ def run_method():
 #             results.append(instance_file_to_numbers(file))
 #     return jsonify(results)
 
-def benchmark_file_to_numbers(file):
-    #file exemple tai5_5.txt we want to extract (5, 5)
-    file = file[3:-4]
-    file_split = file.split('_')
-    return {
-        'jobs_number': int(file_split[0]),
-        'machines_number': int(file_split[1]),
-    } 
-
-def read_all_instances(BENCHMARKS_FOLDER):
-    results = {}
-    instance_id = ''
-    for file in os.listdir(BENCHMARKS_FOLDER):
-        if file.endswith(".txt"):
-            result = benchmark_file_to_numbers(file)
-            benchmark = Benchmark(result['jobs_number'], result['machines_number'], BENCHMARKS_FOLDER)
-            instances_number = benchmark.get_instances_number()
-            for i in range(instances_number):
-                results[gen_instance_id(result['jobs_number'], result['machines_number'], i)] = benchmark.get_instance(i)
-    return results
-
-#key:id instance -> value: Instance object
-instances = read_all_instances('./benchmarks')
-
 @app.route("/instances",methods=["GET"])
 @cross_origin()
 def get_instance():
-    print("hello")
-    jobs_number = int(request.args.get('jobs'))
-    machines_number = int(request.args.get('machines'))
     instance_id = request.args.get('instance_id')
-    instance = instances.get(instance_id,None)
+    instance = instances[instance_id]
     if(instance is not None):
         return jsonify({
             "error" : False, 
-            "jobs" : jobs_number,
-            "machines" :machines_number,
-            "id" : instance.id,
+            "jobs" : instance.get_machines_number(),
+            "machines" : instance.get_jobs_number(),
+            "id" : instance_id,
             "instance" :instance.np_array.tolist()
         })
     else:
@@ -143,18 +140,20 @@ def get_instance():
 @app.route("/instances/all",methods=["GET"])
 @cross_origin()
 def get_all_instances():
-    instancess = []
+    result = []
     for k,v in instances.items():
-        instancess.append({
+        result.append({
             "jobs" : v.get_jobs_number(),
             "machines" :v.get_machines_number(),
             "id" : v.id,
             "instance" :v.np_array.tolist()
         })
+
+    print("\n\n\n\n\n\n",'hey')
     return jsonify({
             "error" : False, 
-            "count" : len(instancess),
-            "instances" :instancess
+            "count" : len(result),
+            "instances" :result
         })
 
 if __name__ == '__main__':
