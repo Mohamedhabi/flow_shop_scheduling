@@ -1,5 +1,7 @@
 #import utils
-
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils import *
 import time
 import random
 import sys
@@ -21,99 +23,6 @@ def evaluateSeqeunce(instance: Instance,sequence : tuple):
             cost_array[job_index][machine] = max(top,left) + cost
         job_index += 1
     return cost_array[jobs_count-1][machine_count-1]
-
-
-# class Benchmark:
-#     """
-#     A class representing a benchmark
-#     a benchmark is consists of multiple instance 
-#     """
-#     def __init__(self, nb_jobs, nb_machines, benchmark_folder = './benchmarks'):
-#         self.nb_jobs = nb_jobs
-#         self.nb_machines = nb_machines
-#         self.instances = []
-#         self.number_of_instances = 0
-#         with open(benchmark_folder+"/tai"+str(nb_jobs)+'_'+str(nb_machines)+".txt") as file:
-#             for i, group in enumerate(get_groups(file, "number of jobs")):
-#                 self.number_of_instances = i+1
-#                 group[1] = re.sub(' +', ' ', group[1])[1:-1]
-#                 infos = group[1].split(' ')
-#                 instance_matrix = []
-                
-#                 for i in range(3, 3+nb_machines):
-#                     group[i] = group[i][:-1]
-#                     machine = group[i].split(' ')
-#                     machine = [ x for x in machine if x.isdigit() ]
-#                     instance_matrix.append(machine)
-
-#                 self.instances.append(Instance(
-#                     instance_2d_array = np.array(instance_matrix,dtype= np.int64).transpose(), 
-#                     upper_bound = int(infos[-2]), 
-#                     lower_bound = int(infos[-1])))
-
-#     def get_instances_number(self):
-#         return self.number_of_instances
-    
-#     #index starts at 0
-#     def get_instance(self, number):
-#         if number < self.number_of_instances:
-#             return self.instances[number]
-
-
-class Instance:
-    """
-    Instance of the problem
-    """
-    def __init__(self, instance_2d_array, upper_bound = None, lower_bound = None):
-        self.np_array = instance_2d_array
-        self.upper_bound = upper_bound
-        self.lower_bound = lower_bound
-  
-
-    def get_cost(self, job, machine):
-        return self.np_array[job][machine]
-
-    def get_job_costs(self, job):
-        return self.np_array[job]
-
-    def get_machine_costs(self, machine):
-        return self.np_array[:,machine]
-
-    def get_jobs_number(self):
-        return self.np_array.shape[0]
-    
-    def get_machines_number(self):
-        return self.np_array.shape[1]
-    
-    def makespan(self, schedule, return_matrix = False):
-        """Calculate completion times for each job in each machine.
-        Arguments:
-            sequence: Numpy array with Current sequence
-            processing_times: Numpy 2d array with processing times.
-            num_machines: Number of machines in this problem.
-            return_array: If 1 return array with each completition time,
-            if 0 return just an integer with the completion time of the
-            last job in the last machine.
-        Returns:
-            e: completion time of the last job in the last machine (int)
-        """
-        jobs_count = self.get_jobs_number()
-        machine_count = self.get_machines_number()
-        cost_array = np.zeros((jobs_count,machine_count))
-        job_index = 0
-        for job in schedule:
-            for machine in range(machine_count):
-                cost = self.get_cost(job,machine)
-                top = 0 if job_index == 0 else cost_array[job_index-1][machine]
-                left = 0 if machine == 0 else cost_array[job_index][machine-1] 
-                cost_array[job_index][machine] = max(top,left) + cost
-            job_index += 1
-        if return_matrix : return cost_array
-        return cost_array[jobs_count-1][machine_count-1]
-
-
-
-
 
 instance1 = Instance(
     np.array([
@@ -344,9 +253,10 @@ def insert_best_position(solution, job,tie_breaking=False):
 def NEH(inst,tie_breaking=False,order_jobs="SD"):
 
     processing_times=[]
+    t0 = time.perf_counter()
 
     for i in range(inst.get_jobs_number()): 
-         processing_times.append(ben.get_job_costs(i))
+         processing_times.append(inst.get_job_costs(i))
 
     solution=Solution(processing_times)
 
@@ -384,7 +294,7 @@ def NEH(inst,tie_breaking=False,order_jobs="SD"):
     #sorted_jobs = [i for i in range(1, solution.get_jobs_number()+1 )]
     #sorted_jobs=np.flip(total_processing_times.argsort())
     #sorted_jobs=total_processing_times.argsort()
-    print("sorted: ",sorted_jobs)
+    #print("sorted: ",sorted_jobs)
 
     # Take the first two jobs and schedule them in order to minimize the partial makespan
     solution.sequence= [sorted_jobs[0],sorted_jobs[1]]
@@ -403,9 +313,11 @@ def NEH(inst,tie_breaking=False,order_jobs="SD"):
     for job in sorted_jobs[2:]:
         insert_best_position(solution,job,tie_breaking)
 
+    #TMP Solution !!!!!!
     return {
-        "C_max" : solution.makespan,
-        "order" : solution.sequence
+        "C_max" : inst.makespan(solution.sequence),
+        "order" : solution.sequence,
+        "time" : time.perf_counter() - t0
     }
     
     # print("neh makespan",solution.makespan)
@@ -413,18 +325,6 @@ def NEH(inst,tie_breaking=False,order_jobs="SD"):
     # print("mine makespan",calculate_makespan(solution))
     # print("b&b cmax", evaluateSeqeunce(inst,tuple(solution.sequence)))
     
-
-
-
-
-
-#NEH(instance4)
-
-
-
-
-
-
 def get_results(instance,tie_breaking=False,jobs_order="SD"):
     """Get the results of the algorithm on the specified instance
 
@@ -434,11 +334,7 @@ def get_results(instance,tie_breaking=False,jobs_order="SD"):
     Returns:
         list: jobs order
     """
-
-    #exemples
-    instance.get_cost(0,0) # The cost of Job 0, on machine 0
-    instance.get_job_costs(0) # the costs of job 0 on all machines
-    instance.get_machine_costs(0) # Get the costs of all jobs on machine 0
-    #...
-
     return NEH(instance)
+bn =Benchmark(20,20,"../benchmarks")
+ins = bn.get_instance(0)
+print(get_results(ins))
