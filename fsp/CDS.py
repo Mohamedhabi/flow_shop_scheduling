@@ -32,28 +32,6 @@ def get_cds_sub_sequences(instance: Instance):
         "sequences" : sequences
     }
 
-def makespan(instance: Instance, schedule: list): 
-    C_max = 0 # makespan 
-    n = instance.get_jobs_number() # number of jobs in the instance 
-    m = instance.get_machines_number() # number of machines 
-    completionTimes = np.zeros((n,m)) #an (n,m) array that gives the completion time for a job i in machine j 
-    #we iterate over the schedule list, foreach job, we calculate its completion time on all machines 
-    for i in range(len(schedule)):
-        jobCosts = instance.get_job_costs(schedule[i]) # an array of all operations' time for job i 
-        if(i==0):
-            completionTimes[schedule[i],:] = jobCosts
-        else:
-            for j in range(m):
-                if(j == 0): #case when we are in the first operation for th i'th job 
-                    completionTimes[schedule[i],j] = completionTimes[schedule[i-1],j] +jobCosts[j]
-                else:
-                    if(completionTimes[schedule[i],j-1] > completionTimes[schedule[i-1],j]):
-                        completionTimes[schedule[i],j] = completionTimes[schedule[i],j-1]+jobCosts[j] 
-                    else: 
-                        completionTimes[schedule[i],j] = completionTimes[schedule[i-1],j]+jobCosts[j] 
-    C_max = completionTimes[schedule[len(schedule)-1],m-1]
-    return C_max; 
-
 def get_results(instance: Instance):
     """an Optimal O(m*nlogn) algorithm for solving the PFSP (n jobs, m machines) based on jhonson's algorithem
 
@@ -77,7 +55,7 @@ def get_results(instance: Instance):
         #calculate the order using jhonson algorithem: 
         schedule = johnson(sequences[i])
         o = schedule['order']
-        c = makespan(instance,o) 
+        c = instance.makespan(o)
         if(i==0):
             C_max = c 
             order = o 
