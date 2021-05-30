@@ -1,0 +1,802 @@
+[
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 500,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1733.0,
+          "order": [
+            4,
+            15,
+            5,
+            3,
+            7,
+            9,
+            14,
+            16,
+            17,
+            11,
+            18,
+            12,
+            1,
+            8,
+            6,
+            19,
+            10,
+            2,
+            13,
+            0
+          ],
+          "time": 5.7608338
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 350,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1770.0,
+          "order": [
+            4,
+            5,
+            3,
+            9,
+            16,
+            17,
+            18,
+            13,
+            12,
+            1,
+            8,
+            6,
+            14,
+            10,
+            11,
+            15,
+            7,
+            2,
+            19,
+            0
+          ],
+          "time": 2.3457069000000956
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 600,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1696.0,
+          "order": [
+            4,
+            15,
+            6,
+            16,
+            5,
+            14,
+            7,
+            3,
+            17,
+            11,
+            18,
+            9,
+            12,
+            1,
+            8,
+            19,
+            10,
+            2,
+            13,
+            0
+          ],
+          "time": 3.982626199999686
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1719.0,
+          "order": [
+            4,
+            15,
+            5,
+            3,
+            13,
+            6,
+            7,
+            11,
+            16,
+            18,
+            12,
+            1,
+            8,
+            19,
+            9,
+            14,
+            10,
+            17,
+            2,
+            0
+          ],
+          "time": 6.6618132999997215
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1500,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1729.0,
+          "order": [
+            4,
+            15,
+            5,
+            0,
+            3,
+            16,
+            7,
+            17,
+            11,
+            18,
+            12,
+            6,
+            2,
+            9,
+            1,
+            13,
+            10,
+            14,
+            19,
+            8
+          ],
+          "time": 9.967275800000152
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 2000,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1728.0,
+          "order": [
+            4,
+            15,
+            13,
+            5,
+            3,
+            16,
+            17,
+            7,
+            6,
+            1,
+            11,
+            18,
+            14,
+            12,
+            8,
+            19,
+            2,
+            9,
+            10,
+            0
+          ],
+          "time": 13.53624499999978
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 7,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1678.0,
+          "order": [
+            4,
+            15,
+            5,
+            7,
+            3,
+            14,
+            16,
+            6,
+            17,
+            11,
+            18,
+            9,
+            12,
+            1,
+            2,
+            8,
+            19,
+            13,
+            10,
+            0
+          ],
+          "time": 9.321360699999786
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 10,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1736.0,
+          "order": [
+            4,
+            15,
+            5,
+            3,
+            17,
+            8,
+            11,
+            18,
+            1,
+            6,
+            19,
+            16,
+            2,
+            12,
+            14,
+            10,
+            9,
+            7,
+            13,
+            0
+          ],
+          "time": 13.408017100000052
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 4
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1691.0,
+          "order": [
+            4,
+            15,
+            5,
+            9,
+            3,
+            7,
+            16,
+            17,
+            11,
+            18,
+            12,
+            13,
+            1,
+            8,
+            6,
+            19,
+            10,
+            2,
+            0,
+            14
+          ],
+          "time": 7.327727600000344
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 5
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1707.0,
+          "order": [
+            4,
+            15,
+            9,
+            5,
+            7,
+            3,
+            16,
+            17,
+            11,
+            18,
+            13,
+            12,
+            1,
+            8,
+            6,
+            19,
+            0,
+            10,
+            2,
+            14
+          ],
+          "time": 7.966172599999936
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.9,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1746.0,
+          "order": [
+            6,
+            15,
+            14,
+            4,
+            5,
+            16,
+            17,
+            11,
+            18,
+            12,
+            13,
+            1,
+            8,
+            19,
+            3,
+            9,
+            10,
+            7,
+            2,
+            0
+          ],
+          "time": 6.8890949999999975
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.99,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": false,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1732.0,
+          "order": [
+            4,
+            15,
+            5,
+            3,
+            6,
+            19,
+            16,
+            17,
+            7,
+            11,
+            18,
+            12,
+            1,
+            8,
+            9,
+            14,
+            10,
+            2,
+            13,
+            0
+          ],
+          "time": 6.591304300000047
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": true,
+      "threads": 5,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1719.0,
+          "order": [
+            4,
+            15,
+            5,
+            3,
+            8,
+            6,
+            16,
+            17,
+            11,
+            18,
+            12,
+            1,
+            14,
+            7,
+            19,
+            2,
+            9,
+            13,
+            10,
+            0
+          ],
+          "time": 8.681891899999755
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 500,
+      "parallel": true,
+      "threads": 5,
+      "local_search": false
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1830.0,
+          "order": [
+            4,
+            15,
+            5,
+            3,
+            16,
+            17,
+            11,
+            18,
+            12,
+            1,
+            8,
+            6,
+            19,
+            14,
+            10,
+            9,
+            7,
+            2,
+            13,
+            0
+          ],
+          "time": 4.038462900000013
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": true,
+      "threads": 5,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1737.0,
+          "order": [
+            4,
+            15,
+            5,
+            3,
+            17,
+            11,
+            18,
+            12,
+            8,
+            6,
+            16,
+            19,
+            14,
+            10,
+            9,
+            7,
+            2,
+            13,
+            1,
+            0
+          ],
+          "time": 8.697793700000148
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 5,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": true,
+      "threads": 5,
+      "local_search": false
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1830.0,
+          "order": [
+            4,
+            15,
+            5,
+            3,
+            16,
+            17,
+            11,
+            18,
+            12,
+            1,
+            8,
+            6,
+            19,
+            14,
+            10,
+            9,
+            7,
+            2,
+            13,
+            0
+          ],
+          "time": 7.327104500000132
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "initValue": 1e-06,
+      "nbAnts": 10,
+      "rho": 0.01,
+      "alpha": 1,
+      "beta": 0.0001,
+      "q0": 0.97,
+      "heuristic_info_strategy": "min",
+      "nb_rounds": 1000,
+      "parallel": true,
+      "threads": 10,
+      "local_search": true,
+      "local_search_proba": 0.02,
+      "local_search_nb_permutation": 3
+    },
+    "results": [
+      {
+        "instance": 9,
+        "results": {
+          "C_max": 1697.0,
+          "order": [
+            4,
+            15,
+            7,
+            5,
+            3,
+            11,
+            18,
+            9,
+            12,
+            8,
+            6,
+            19,
+            16,
+            14,
+            17,
+            10,
+            2,
+            13,
+            1,
+            0
+          ],
+          "time": 16.133971599999768
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "popul_size" : 12,
+        "nb_generations" : 500,
+        "Pc" : 0.95,
+        "Pm" : 0.06
+    },
+    {
+        "popul_size" : 30,
+        "nb_generations" : 2500,
+        "Pc" : 0.8,
+        "Pm" : 0.2
+    },
+    {
+        "popul_size" : 50,
+        "nb_generations" : 1000,
+        "Pc" : 0.9,
+        "Pm" : 0.03
+    },
+    {
+        "popul_size" : 100,
+        "nb_generations" : 2500,
+        "Pc" : 0.6,
+        "Pm" : 0.02
+    },
+    {
+        "popul_size" : 330,
+        "nb_generations" : 1500,
+        "Pc" : 0.5,
+        "Pm" : 0.5
+    }
+]
