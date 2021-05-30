@@ -2,7 +2,7 @@ from random import randint
 import time
 import numpy as np
 from .specific_heuristic_NEH import NEH
-from .CDS import cds as CDS
+from .CDS import get_results as cds
 from utils import Instance
 
 #population_size = 100
@@ -26,7 +26,7 @@ def simulated_annealing(instance : Instance, intial_value , Ti = 2000,Tf = 0.1 ,
         
     elif(intial_value=='CDS') :
         print('CDS')
-        cds = CDS(instance)
+        cds = cds(instance)
         old_seq = cds['order']
         old_makeSpan = cds['C_max']  
     new_seq =[]  

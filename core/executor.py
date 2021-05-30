@@ -5,32 +5,37 @@ import fsp.branch_and_bound as bnb
 from fsp.branch_and_bound import *
 import numpy as np
 from time import perf_counter
-from fsp import specific_heuristic_NEH, ACO, CDS, simulated_annealing, meta_heuristic_ga
+import fsp.specific_heuristic_NEH as specific_heuristic_NEH
+import fsp.ACO as ACO
+import fsp.CDS as CDS
+import fsp.simulated_annealing as simulated_annealing
+import fsp.meta_heuristic_ga as meta_heuristic_ga
 
 
-def execute_bnb(instance : Instance, params : dict):
+def execute_bnb(instance: Instance, params: dict):
     rn = []
     exectime = -1
     makespan = -1
     addinfo = {}
-    method=""
+    method = ""
     print(f"executing {BRANCH_AND_BOUND['method']}")
     method = BRANCH_AND_BOUND['method']
-    useHeuristique = params.get("use_heuristique",True)
-    strategy = params.get("strategy_id",bnb.DEPTH_FIRST_SEARCH)
-    parallel = params.get("parallel",False)
+    useHeuristique = params.get("use_heuristique", True)
+    strategy = params.get("strategy_id", bnb.DEPTH_FIRST_SEARCH)
+    parallel = params.get("parallel", False)
     if strategy > bnb.DEPTH_FIRST_SEARCH:
         strategy = bnb.DEPTH_FIRST_SEARCH
     t0 = perf_counter()
     result = None
     if(parallel):
-        result,det= parallel_bnb.get_results(instance)
+        result, det = parallel_bnb.get_results(instance)
         exectime = perf_counter() - t0
         addinfo["leafs"] = det[2]
         addinfo["explored"] = det[0]
         addinfo["pruned"] = det[1]
-    else:    
-        result = bnb.get_results(instance,search_strategy=strategy,use_heuristique_init=useHeuristique)
+    else:
+        result = bnb.get_results(
+            instance, search_strategy=strategy, use_heuristique_init=useHeuristique)
         exectime = perf_counter() - t0
     rn = result["order"]
     makespan = result["C_max"]
@@ -55,9 +60,10 @@ def execute_bnb(instance : Instance, params : dict):
     }
     return res, None
 
-def execute_others(instance : Instance, params, module, method):
+
+def execute_others(instance: Instance, params, module, method):
     res = module.get_results(instance, **params)
-    result =  {
+    result = {
         "instance_id": instance.id,
         "method": method,
         "makespan": int(res['C_max']),
@@ -68,10 +74,10 @@ def execute_others(instance : Instance, params, module, method):
     print(result)
     return result, None
 
-    
+
 def execute(method_id: int, instance: Instance, params):
     if(method_id == BRANCH_AND_BOUND["id"]):
-       return execute_bnb(instance,params)
+        return execute_bnb(instance, params)
     if(method_id == METHOD_NEH["id"]):
         return execute_others(instance, params, specific_heuristic_NEH, METHOD_NEH['method'])
     if(method_id == METHOD_ACO["id"]):

@@ -335,6 +335,6 @@ def get_results(instance,tie_breaking=False,jobs_order="SD"):
         list: jobs order
     """
     return NEH(instance)
-bn =Benchmark(20,20,"../benchmarks")
-ins = bn.get_instance(0)
-print(get_results(ins))
+# bn =Benchmark(20,20,"../benchmarks")
+# ins = bn.get_instance(0)
+# print(get_results(ins))

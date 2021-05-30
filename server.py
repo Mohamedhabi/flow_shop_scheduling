@@ -14,7 +14,7 @@ import os
 app = Flask(__name__)
 cors = CORS(app)
 OUTPUT_FOLDER = 'results'
-benchmark20_20 = Benchmark(20,20)
+
 def get_result_file_name(jobs_number,machines_number,instance_number):
     return OUTPUT_FOLDER+'/bnb/res_'+ '%d_%d_%d' % (jobs_number,machines_number,instance_number)+".json"
 
@@ -48,7 +48,9 @@ def run_method():
     instance_id = body.get("instance_id",None)
     print(instance_id)
     if instance_id is not None:
-        instance = benchmark20_20.get_instance(instance_id)
+        instance = instances.get(instance_id,None)
+        if instance is None:
+            return jsonify({"error" : True,"message" : "Instance not found"}),404
     else:
         instanceJson = body.get("instance",None)
         if instanceJson is None :
@@ -60,8 +62,8 @@ def run_method():
         body.get("params",None)
     )
     if err is not None:
-        jsonify({"error" : True,"message" : err["message"]})
-    return jsonify(res)   
+        jsonify({"error" : True,"message" : err["message"]}),500
+    return jsonify(res),200  
 
 
 #http://localhost:5000/lunchbnb?jobs=5&machines=4&instance=1
@@ -117,7 +119,7 @@ def read_all_instances(BENCHMARKS_FOLDER):
     return results
 
 #key:id instance -> value: Instance object
-instances = read_all_instances('benchmarks')
+instances = read_all_instances('./benchmarks')
 
 @app.route("/instances",methods=["GET"])
 @cross_origin()
@@ -125,13 +127,9 @@ def get_instance():
     print("hello")
     jobs_number = int(request.args.get('jobs'))
     machines_number = int(request.args.get('machines'))
-    instance_number = int(request.args.get('instance'))
-    try:
-        benchmark = instances[jobs_number][machines_number]
-    except :
-        benchmark = None
-    if(benchmark is not None):
-        instance = benchmark.get_instance(instance_number)
+    instance_id = request.args.get('instance_id')
+    instance = instances.get(instance_id,None)
+    if(instance is not None):
         return jsonify({
             "error" : False, 
             "jobs" : jobs_number,
@@ -140,29 +138,22 @@ def get_instance():
             "instance" :instance.np_array.tolist()
         })
     else:
-        return jsonify({"error" : True,"message" : f"no existing benchmark for jobs={jobs_number} and machines={machines_number}"})
+        return jsonify({"error" : True,"message" : f"no existing instance for id={instance_id}"})
 
 @app.route("/instances/all",methods=["GET"])
 @cross_origin()
 def get_all_instances():
     instancess = []
-    count = None
     for k,v in instances.items():
-        for k2,v2 in v.items():
-           print(v2)
-           ben = v2
-           count = ben.get_instances_number()
-           for i in range (count):
-               instance = ben.get_instance(i)
-               instancess.append({
-                   "jobs" : k,
-                   "machines" :k2,
-                   "id" : instance.id,
-                   "instance" : instance.np_array.tolist()
-               }) 
+        instancess.append({
+            "jobs" : v.get_jobs_number(),
+            "machines" :v.get_machines_number(),
+            "id" : v.id,
+            "instance" :v.np_array.tolist()
+        })
     return jsonify({
             "error" : False, 
-            "count" : count,
+            "count" : len(instancess),
             "instances" :instancess
         })
 
