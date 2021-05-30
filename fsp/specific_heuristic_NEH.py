@@ -245,7 +245,7 @@ def insert_best_position(solution, job,tie_breaking=False):
         sequence_np = np.array(solution.sequence, dtype='int64')
         best_position, makespan = taillard_acceleration(sequence_np,processing_times,job,solution.num_machines, use_tie_breaking)
 
-        solution.sequence.insert(best_position- 1, job)
+        solution.sequence.insert(best_position- 1, int(job))
         solution.makespan=makespan
         return makespan
 
@@ -309,15 +309,16 @@ def NEH(inst,tie_breaking=False,order_jobs="SD"):
         solution.makespan = makespan1
     # For i = 3 to n: Insert the i-th job at the place, among
     # the i possible ones, which minimize the partial makespan
-
+    exec_time = time.perf_counter() - t0
     for job in sorted_jobs[2:]:
         insert_best_position(solution,job,tie_breaking)
-
+    for i in range(len(solution.sequence)):
+        solution.sequence[i] = int(solution.sequence[i])
     #TMP Solution !!!!!!
     return {
-        "C_max" : inst.makespan(solution.sequence),
+        "C_max" : int(inst.makespan(solution.sequence)),
         "order" : solution.sequence,
-        "time" : time.perf_counter() - t0
+        "time" : exec_time
     }
     
     # print("neh makespan",solution.makespan)
