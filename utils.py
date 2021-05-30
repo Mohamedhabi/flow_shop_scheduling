@@ -8,6 +8,8 @@ from sympy import Id
 def convert_to_datetime(x):
       return datetime.fromtimestamp(31536000+x*24*3600).strftime("%Y-%m-%d")
 
+def gen_instance_id(jobs: int,machine: int,index: int):
+    return str(jobs)+"x"+str(machine)+"-"+str(index)
 
 def get_groups(seq, group_by):
     data = []
@@ -109,8 +111,6 @@ class Instance:
         if return_matrix : return cost_array
         return cost_array[jobs_count-1][machine_count-1]
 
-def gen_instance_id(jobs: int,machine: int,index: int):
-    return str(jobs)+"x"+str(machine)+"-"+str(index)
 class Benchmark:
     """
     A class representing a benchmark

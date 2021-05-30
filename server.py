@@ -2,7 +2,7 @@ import sys
 from flask import Flask, request, jsonify,redirect
 from flask_cors import CORS,cross_origin
 from fsp import branch_and_bound, parallel_bnb
-from utils import Instance, Benchmark,JsonBenchmark
+from utils import Instance, Benchmark,JsonBenchmark, gen_instance_id
 from core.executor import execute
 import numpy as np
 from multiprocessing import Process, Value
@@ -95,11 +95,30 @@ def run_method():
 #             results.append(instance_file_to_numbers(file))
 #     return jsonify(results)
 
-instances = {
-    20 : {
-        20 : benchmark20_20
-    }
-}
+def benchmark_file_to_numbers(file):
+    #file exemple tai5_5.txt we want to extract (5, 5)
+    file = file[3:-4]
+    file_split = file.split('_')
+    return {
+        'jobs_number': int(file_split[0]),
+        'machines_number': int(file_split[1]),
+    } 
+
+def read_all_instances(BENCHMARKS_FOLDER):
+    results = {}
+    instance_id = ''
+    for file in os.listdir(BENCHMARKS_FOLDER):
+        if file.endswith(".txt"):
+            result = benchmark_file_to_numbers(file)
+            benchmark = Benchmark(result['jobs_number'], result['machines_number'], BENCHMARKS_FOLDER)
+            instances_number = benchmark.get_instances_number()
+            for i in range(instances_number):
+                results[gen_instance_id(result['jobs_number'], result['machines_number'], i)] = benchmark.get_instance(i)
+    return results
+
+#key:id instance -> value: Instance object
+instances = read_all_instances('benchmarks')
+
 @app.route("/instances",methods=["GET"])
 @cross_origin()
 def get_instance():
