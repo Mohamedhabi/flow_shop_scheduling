@@ -1,7 +1,7 @@
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import Instance, Benchmark
-from fsp import ACO, specific_heuristic_NEH,branch_and_bound, meta_heuristic_ga, simulated_annealing, CDS
+from fsp import ACO, specific_heuristic_NEH,branch_and_bound, meta_heuristic_ga, simulated_annealing, CDS, GUPTA
 import numpy as np
 import json
 import re
@@ -76,10 +76,10 @@ def run_test(module, folder_name, params_path, benchmarks_path, tai_benchmarks, 
 if __name__ == '__main__':
     #Benchmarks to execute
     tai_benchmarks = [
-        # [5,5],
-        # [20,5],
-        # [20,10],
-        # [20,20],
+        [5,5],
+        [20,5],
+        [20,10],
+        [20,20],
         [50,5],
         [50,10],
         [50,20],
@@ -90,6 +90,7 @@ if __name__ == '__main__':
     ]
     #run_test(ACO, 'aco', 'tests/params/aco.json', './benchmarks', tai_benchmarks, None)
     #run_test(simulated_annealing, 'sa', 'tests/params/sa.json', './benchmarks', tai_benchmarks, 2)
-    run_test(CDS, 'cds', 'tests/params/none.json', './benchmarks', tai_benchmarks)
+    #run_test(CDS, 'cds', 'tests/params/none.json', './benchmarks', tai_benchmarks)
+    run_test(GUPTA, 'gupta', 'tests/params/none.json', './benchmarks', tai_benchmarks)
     #run_test(specific_heuristic_NEH, 'neh', 'tests/params/none.json', './benchmarks', tai_benchmarks)
     #run_test(meta_heuristic_ga, 'ga', 'tests/params/ga.json', './benchmarks', tai_benchmarks, 2)
