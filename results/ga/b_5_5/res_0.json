@@ -1,0 +1,2690 @@
+[
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.8,
+      "Pm": 0.01
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.28523802757263184
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.8,
+      "Pm": 0.02
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2640399932861328
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.8,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2713780403137207
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.8,
+      "Pm": 0.1
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2619462013244629
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.8,
+      "Pm": 0.2
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.271960973739624
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.85,
+      "Pm": 0.01
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2627408504486084
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.85,
+      "Pm": 0.02
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2714254856109619
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.85,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.263505220413208
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.85,
+      "Pm": 0.1
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2607738971710205
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.85,
+      "Pm": 0.2
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "time": 0.27161717414855957
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.87,
+      "Pm": 0.01
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.28252220153808594
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.87,
+      "Pm": 0.02
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2800276279449463
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.87,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2819383144378662
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.87,
+      "Pm": 0.1
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2736821174621582
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.87,
+      "Pm": 0.2
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2917935848236084
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.01
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2917792797088623
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.02
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.30222463607788086
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.29177236557006836
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.1
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.291980504989624
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.2
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2914292812347412
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.92,
+      "Pm": 0.01
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2997584342956543
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.92,
+      "Pm": 0.02
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.29393815994262695
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.92,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "time": 0.2923870086669922
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.92,
+      "Pm": 0.1
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.29153871536254883
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.92,
+      "Pm": 0.2
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2940821647644043
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.94,
+      "Pm": 0.01
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2925701141357422
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.94,
+      "Pm": 0.02
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.30196094512939453
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.94,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2924492359161377
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.94,
+      "Pm": 0.1
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.30240893363952637
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.94,
+      "Pm": 0.2
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.29169678688049316
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.96,
+      "Pm": 0.01
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.332273006439209
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.96,
+      "Pm": 0.02
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.32896852493286133
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.96,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.32694268226623535
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.96,
+      "Pm": 0.1
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3219742774963379
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.96,
+      "Pm": 0.2
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3221745491027832
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.98,
+      "Pm": 0.01
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3320283889770508
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.98,
+      "Pm": 0.02
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.32251429557800293
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.98,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.32152628898620605
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.98,
+      "Pm": 0.1
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3217620849609375
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.98,
+      "Pm": 0.2
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3219146728515625
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 5,
+      "nb_generations": 20,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.02010488510131836
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 5,
+      "nb_generations": 30,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "time": 0.020128488540649414
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 5,
+      "nb_generations": 50,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.048367977142333984
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 5,
+      "nb_generations": 70,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.05294680595397949
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 5,
+      "nb_generations": 100,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.08843684196472168
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 5,
+      "nb_generations": 120,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.10047388076782227
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 5,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.1229543685913086
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 5,
+      "nb_generations": 170,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.14092421531677246
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 5,
+      "nb_generations": 200,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.1611166000366211
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 7,
+      "nb_generations": 20,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.028094053268432617
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 7,
+      "nb_generations": 30,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.03221487998962402
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 7,
+      "nb_generations": 50,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.05027151107788086
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 7,
+      "nb_generations": 70,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.08053755760192871
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 7,
+      "nb_generations": 100,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.11086368560791016
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 7,
+      "nb_generations": 120,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.130753755569458
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 7,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.1611008644104004
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 7,
+      "nb_generations": 170,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.1817457675933838
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 7,
+      "nb_generations": 200,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.22107148170471191
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 9,
+      "nb_generations": 20,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "time": 0.03019881248474121
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 9,
+      "nb_generations": 30,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.04023551940917969
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 9,
+      "nb_generations": 50,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.07841992378234863
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 9,
+      "nb_generations": 70,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.10115551948547363
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 9,
+      "nb_generations": 100,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.1429147720336914
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 9,
+      "nb_generations": 120,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.17109370231628418
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 9,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.22345900535583496
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 9,
+      "nb_generations": 170,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2404038906097412
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 9,
+      "nb_generations": 200,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.29166603088378906
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 20,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.040288448333740234
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 30,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.06039905548095703
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 50,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.10090136528015137
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 70,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.14110636711120605
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 100,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.19906258583068848
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 120,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2338566780090332
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3019707202911377
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 170,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3325529098510742
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 12,
+      "nb_generations": 200,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3921773433685303
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 15,
+      "nb_generations": 20,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.05042409896850586
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 15,
+      "nb_generations": 30,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.08051061630249023
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 15,
+      "nb_generations": 50,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.1207733154296875
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 15,
+      "nb_generations": 70,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.1792764663696289
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 15,
+      "nb_generations": 100,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.25225377082824707
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 15,
+      "nb_generations": 120,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.29361987113952637
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 15,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3813660144805908
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 15,
+      "nb_generations": 170,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.42465639114379883
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 15,
+      "nb_generations": 200,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.49310851097106934
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 20,
+      "nb_generations": 20,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.07072210311889648
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 20,
+      "nb_generations": 30,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.09849762916564941
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 20,
+      "nb_generations": 50,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.16150140762329102
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 20,
+      "nb_generations": 70,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.22394418716430664
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 20,
+      "nb_generations": 100,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3220858573913574
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 20,
+      "nb_generations": 120,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.3876969814300537
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 20,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.4782555103302002
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 20,
+      "nb_generations": 170,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.5437822341918945
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 20,
+      "nb_generations": 200,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.6448426246643066
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 50,
+      "nb_generations": 20,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "time": 0.16114091873168945
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 50,
+      "nb_generations": 30,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.24245977401733398
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 50,
+      "nb_generations": 50,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.40238499641418457
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 50,
+      "nb_generations": 70,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.566049337387085
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 50,
+      "nb_generations": 100,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.7932107448577881
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 50,
+      "nb_generations": 120,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.9564425945281982
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 50,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 1.1958625316619873
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 50,
+      "nb_generations": 170,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 1.351198434829712
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 50,
+      "nb_generations": 200,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 1.6103954315185547
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 80,
+      "nb_generations": 20,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.2540311813354492
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 80,
+      "nb_generations": 30,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.39322972297668457
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 80,
+      "nb_generations": 50,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 0.6345210075378418
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 80,
+      "nb_generations": 70,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 0.9064216613769531
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 80,
+      "nb_generations": 100,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 1.2798449993133545
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 80,
+      "nb_generations": 120,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 1.5416157245635986
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 80,
+      "nb_generations": 150,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 1.9225945472717285
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 80,
+      "nb_generations": 170,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "time": 2.1665561199188232
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "popul_size": 80,
+      "nb_generations": 200,
+      "Pc": 0.9,
+      "Pm": 0.06
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 528.0,
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "time": 2.548509120941162
+        }
+      }
+    ]
+  }
+]

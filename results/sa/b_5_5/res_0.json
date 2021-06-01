@@ -1,0 +1,3002 @@
+[
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.00030649999999998734
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.003074799999999933
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.006114699999999917
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.011824100000000004
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.02511770000000002
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.05309469999999994
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.0798542000000001
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.13239840000000003
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.2802734
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 10,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.5657019000000001
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.0002761999999998377
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.003398700000000199
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.007069500000000062
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.013404799999999994
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.029584999999999972
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.06711390000000006
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.09167189999999992
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.1553557000000001
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.3172910999999998
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 20,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.6260840000000001
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.00027549999999987307
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.0034108999999999945
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.00681789999999971
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.013716300000000015
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.03038799999999986
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.06482509999999975
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.09881410000000024
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.16245120000000002
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.32977809999999996
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 30,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.6680765000000002
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.00037090000000006285
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.004694299999999707
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.008236399999999477
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.01424110000000045
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.0322129999999996
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.07230449999999955
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.10267530000000047
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.17649369999999998
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.3648745
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 50,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.7335956000000001
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.00028680000000047556
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.004392900000000033
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.008433100000000415
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.016882100000000122
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.03764449999999986
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.08305649999999964
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.13637370000000004
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.2685728000000003
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.5131967000000008
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 100,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 1.1530490000000002
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.00030719999999995196
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.007384699999999356
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.011592300000000222
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.023349400000000742
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.04666319999999935
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.10180169999999933
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.15000910000000012
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.22083750000000002
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.4289320000000014
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 150,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.8584360999999987
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.00027940000000015175
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.004602900000000076
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.00886859999999956
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.0184388000000002
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.041729699999999426
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.09512819999999955
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.13041880000000106
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.21535240000000044
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.44421029999999995
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 200,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.8875498000000004
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.0002876000000000545
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.004772400000000232
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.009303899999999032
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.018728700000000487
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.04092590000000129
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.08721820000000058
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.1313695999999993
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.22862530000000092
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.4541822999999994
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 250,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.9019507999999998
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.0002776999999998253
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.0050384000000001095
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.009886099999999232
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.01973749999999974
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.044353599999999105
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.09456989999999976
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.14645360000000096
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.246107799999999
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.49498849999999983
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 500,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.9816523999999998
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.0002869999999983719
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.005386599999999575
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.010685600000000406
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.02098729999999982
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.04856209999999983
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.09682920000000017
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.1540480000000013
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.2546691999999986
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.5209876999999992
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 750,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 1.0362423000000014
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.0002861000000002889
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.005563100000003374
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.011025699999997585
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.021514700000000886
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.047678700000002294
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.10077270000000027
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.15939370000000253
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.2637125999999981
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.5337030000000027
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 1000,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 1.0593245000000024
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 1,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.00028749999999888587
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 2,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.0058368000000008635
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 3,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.011730100000001187
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 5,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.02297319999999914
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 10,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.05309040000000209
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 20,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.10945639999999912
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 30,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            2,
+            0,
+            3,
+            1,
+            4
+          ],
+          "C_max": 548,
+          "time": 0.16322810000000132
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 50,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.2770493999999992
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 100,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 0.5733215000000023
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "Ti": 2000,
+      "nb_repetitions": 200,
+      "initial_value": "CDS",
+      "Tf": 0.1,
+      "alpha": 0.93
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "order": [
+            3,
+            1,
+            0,
+            2,
+            4
+          ],
+          "C_max": 528,
+          "time": 1.143720799999997
+        }
+      }
+    ]
+  }
+]

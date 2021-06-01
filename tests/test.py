@@ -90,6 +90,6 @@ if __name__ == '__main__':
     ]
     #run_test(ACO, 'aco', 'tests/params/aco.json', './benchmarks', tai_benchmarks, None)
     #run_test(simulated_annealing, 'sa', 'tests/params/sa.json', './benchmarks', tai_benchmarks, 2)
-    #run_test(CDS, 'cds', 'tests/params/none.json', './benchmarks', tai_benchmarks)
+    run_test(CDS, 'cds', 'tests/params/none.json', './benchmarks', tai_benchmarks)
     #run_test(specific_heuristic_NEH, 'neh', 'tests/params/none.json', './benchmarks', tai_benchmarks)
-    run_test(meta_heuristic_ga, 'ga', 'tests/params/ga.json', './benchmarks', tai_benchmarks, 2)
+    #run_test(meta_heuristic_ga, 'ga', 'tests/params/ga.json', './benchmarks', tai_benchmarks, 2)
