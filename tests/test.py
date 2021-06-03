@@ -76,21 +76,21 @@ def run_test(module, folder_name, params_path, benchmarks_path, tai_benchmarks, 
 if __name__ == '__main__':
     #Benchmarks to execute
     tai_benchmarks = [
-        # [5,5],
-        # [20,5],
-        # [20,10],
-        # [20,20],
-        # [50,5],
-        # [50,10],
-        # [50,20],
+        [5,5],
+        [20,5],
+        [20,10],
+        [20,20],
+        [50,5],
+        [50,10],
+        [50,20],
         [100,5],
         [100,10],
         [100,20],
         [500,20]
     ]
     #run_test(ACO, 'aco', 'tests/params/aco.json', './benchmarks', tai_benchmarks, None)
-    #run_test(simulated_annealing, 'sa', 'tests/params/sa.json', './benchmarks', tai_benchmarks, 2)
+    #run_test(simulated_annealing, 'sa', 'tests/params/sa.json', './benchmarks', tai_benchmarks, 1)
     #run_test(CDS, 'cds', 'tests/params/none.json', './benchmarks', tai_benchmarks)
     #run_test(GUPTA, 'gupta', 'tests/params/none.json', './benchmarks', tai_benchmarks)
-    #run_test(specific_heuristic_NEH, 'neh', 'tests/params/none.json', './benchmarks', tai_benchmarks)
-    run_test(meta_heuristic_ga, 'ga', 'tests/params/ga.json', './benchmarks', tai_benchmarks, 1)
+    run_test(specific_heuristic_NEH, 'neh', 'tests/params/neh.json', './benchmarks', tai_benchmarks)
+    # run_test(meta_heuristic_ga, 'ga', 'tests/params/ga.json', './benchmarks', tai_benchmarks, 1)
