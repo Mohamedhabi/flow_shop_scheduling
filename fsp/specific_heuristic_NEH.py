@@ -276,12 +276,12 @@ def NEH(inst,tie_breaking=False,order_jobs="SD"):
     else: 
         if order_jobs == "AV":
             """Order jobs by non-decreasing sum of the mean and deviation (Huang and Chen, 2008)."""
-            average_plus_deviation = dict()
+            average_plus_deviation = []
             for i in range(1, solution.num_jobs + 1):
                 avg = np.mean(solution.processing_times[i-1])
                 dev = np.std(solution.processing_times[i-1])
-                average_plus_deviation[i] = avg + dev
-            sorted_jobs=sorted(average_plus_deviation, key=average_plus_deviation.get, reverse=True)
+                average_plus_deviation.append(avg + dev)
+            sorted_jobs=(np.array(average_plus_deviation)).argsort()
         else: 
             if order_jobs == "RD":
                 sorted_jobs=total_processing_times.argsort()
