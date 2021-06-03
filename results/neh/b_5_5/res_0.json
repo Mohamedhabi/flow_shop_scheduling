@@ -1,6 +1,9 @@
 [
   {
-    "params": {},
+    "params": {
+      "tie_breaking": false,
+      "jobs_order": "SD"
+    },
     "results": [
       {
         "instance": 0,
@@ -13,7 +16,95 @@
             2,
             0
           ],
-          "time": 0.00012540000000005325
+          "time": 0.00011680000000002799
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "tie_breaking": true,
+      "jobs_order": "SD"
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 609,
+          "order": [
+            3,
+            1,
+            4,
+            2,
+            0
+          ],
+          "time": 6.630000000001912e-05
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "tie_breaking": false,
+      "jobs_order": "D"
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 631,
+          "order": [
+            1,
+            3,
+            4,
+            2,
+            0
+          ],
+          "time": 6.839999999996849e-05
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "tie_breaking": false,
+      "jobs_order": "RD"
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 631,
+          "order": [
+            1,
+            3,
+            4,
+            2,
+            0
+          ],
+          "time": 7.679999999998799e-05
+        }
+      }
+    ]
+  },
+  {
+    "params": {
+      "tie_breaking": false,
+      "jobs_order": "AV"
+    },
+    "results": [
+      {
+        "instance": 0,
+        "results": {
+          "C_max": 609,
+          "order": [
+            3,
+            1,
+            4,
+            2,
+            0
+          ],
+          "time": 0.0002314999999999956
         }
       }
     ]
